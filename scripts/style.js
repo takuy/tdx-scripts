@@ -1,5 +1,17 @@
 function doTabulatorThings() {
-
+  window.$table = new Tabulator('table[name="software_list"]', {
+    layout:"fitColumns",
+    columns: [
+        {
+            title: "Software",
+            formatter: "html"
+        }, {
+            title: "Audience"
+        }, {
+            title: "Description"
+        }
+    ]
+  });
 };
 
 jQuery(document).ready(function() {
