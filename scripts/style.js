@@ -17,6 +17,6 @@ function doTabulatorThings() {
 jQuery(document).ready(function() {
   $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
   $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
-  $.getScript("https://unpkg.com/tabulator-tables@6.3/dist/js/tabulator.min.js", doTabulatorThings());
+  $.getScript("https://unpkg.com/tabulator-tables@6.3/dist/js/tabulator.min.js", $(function() { doTabulatorThings() }) );
 
 });
