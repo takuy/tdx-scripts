@@ -8,3 +8,9 @@ div.panel-body a.btn {
   border-color: #a41e35;
   color: #ffffff;
 }
+
+.btn-primary.focus:not(.active), .btn-primary:focus:not(.active) {
+  background-color: #222222;
+  border-color: #222222;
+  color: #ffffff;
+}
