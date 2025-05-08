@@ -3,11 +3,13 @@ function doTabulatorThings() {
         layout:"fitColumns",
         columns: [
             {
-                title: "",
-                field: "Cost",
+                title: "Cost",
                 formatter: function() {
                     return "💰";
-                }, hozAlign: "center", width: 40
+                }, hozAlign: "center", width: 40,
+                titleFormatter: function() {
+                    return "&nbsp;";
+                }
             },
             {
                 title: "Software",
