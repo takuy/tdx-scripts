@@ -4,8 +4,8 @@ function doTabulatorThings() {
         columns: [
             {
                 title: "Cost",
-                formatter: function() {
-                    return "💰";
+                formatter: function(cell) {
+                    return cell.getValue() == "$" ? "💰" : "";
                 }, hozAlign: "center", width: 40,
                 titleFormatter: function() {
                     return "&nbsp;";
