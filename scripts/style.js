@@ -42,8 +42,8 @@ jQuery(document).ready(function() {
 
     if(jQuery('table.simple-tabulator').length) {
         var toTabulatorify = jQuery('table.simple-tabulator');
-        toTabulatorify.each(function(tabl) {
-            new Tabulator(tabl, {
+        toTabulatorify.each(function() {
+            new Tabulator(this, {
                 layout:"fitColumns"
           });
         });
