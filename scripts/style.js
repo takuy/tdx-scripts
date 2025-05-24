@@ -42,7 +42,7 @@ jQuery(document).ready(function() {
 
     if(jQuery('table.simple-tabulator').length) {
         var toTabulatorify = jQuery('table.simple-tabulator');
-        toTabulatorify.forEach(function(tabl) {
+        toTabulatorify.each(function(tabl) {
             new Tabulator(tabl, {
                 layout:"fitColumns"
           });
