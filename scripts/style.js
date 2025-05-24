@@ -46,6 +46,6 @@ jQuery(document).ready(function() {
             new Tabulator(tabl, {
                 layout:"fitColumns"
           });
-        }
+        });
     }
 });
