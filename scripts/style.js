@@ -8,7 +8,7 @@ function tabulatorSoftwareTable() {
             {
                 title: "Cost",
                 formatter: function(cell) {
-                    return cell.getValue() == "$" ? "💵" : "";
+                    return cell.getValue() == "$" ? "💸" : "";
                 }, hozAlign: "center", width: 40,
                 titleFormatter: function() {
                     return "&nbsp;";
