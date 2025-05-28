@@ -14,3 +14,7 @@ div.panel-body a.btn {
   border-color: #222222;
   color: #ffffff;
 }
+
+div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
+  cursor: default!important;
+}
