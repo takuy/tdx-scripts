@@ -34,7 +34,7 @@ function updateFilter() {
     
     $table.setFilter(function(data, params) {
         let hasRoleMatch = data["audience"].split(", ").some(r=> params.roles.includes(r));
-        let considerRoleMatch = (params.roles.length) > 0 ? match : 1;
+        let considerRoleMatch = (params.roles.length) > 0 ? hasRoleMatch : 1;
 
         let hasTextMatch = false;
         if (params.filterText) {
