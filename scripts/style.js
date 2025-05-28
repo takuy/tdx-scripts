@@ -42,7 +42,6 @@ function updateFilter() {
                 if(prop == "id") {
                     continue;
                 }
-                console.log(data[prop]);
                 if (data[prop] && data[prop].toLowerCase().indexOf(params.filterText.toLowerCase()) > -1) {
                     hasTextMatch |= true;
                 }
