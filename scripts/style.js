@@ -3,7 +3,8 @@ function tabulatorSoftwareTable() {
         layout:"fitColumns",
         pagination:true,
         paginationSize:10,
-        paginationSizeSelector:[10, 25, 50, 100, true],
+        paginationSizeSelector:[5, 10, 25, 50, 100, true],
+        paginationCounter: "rows",
         columns: [
             {
                 title: "Cost",
