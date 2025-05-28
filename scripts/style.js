@@ -8,8 +8,8 @@ function tabulatorSoftwareTable() {
             {
                 title: "Cost",
                 formatter: function(cell) {
-                    return cell.getValue() == "$" ? "💸" : "";
-                }, hozAlign: "center", width: 40,
+                    return cell.getValue() == "$" ? "<span role='img' title='There is a cost associated with this software.'>💸</span>" : "";
+                }, hozAlign: "center", width: 40, resizable: false,
                 titleFormatter: function() {
                     return "&nbsp;";
                 }
@@ -53,6 +53,7 @@ function updateFilter() {
         return considerRoleMatch && hasTextMatch;
     }, {roles: roles, filterText: filterText});
 }
+
 jQuery(document).ready(function() {
     $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
@@ -75,4 +76,5 @@ jQuery(document).ready(function() {
           });
         });
     }
+    
 });
