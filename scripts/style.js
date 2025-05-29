@@ -9,7 +9,7 @@ function tabulatorSoftwareTable() {
             {
                 title: "Cost",
                 formatter: function(cell) {
-                    return cell.getValue() == "$" ? "<span role='img' title='There is a cost associated with this software.'>💸</span>" : "";
+                    return cell.getValue() == "$" ? "<span role='img' title='There is a cost associated with this software.'>💲</span>" : "";
                 }, hozAlign: "center", width: 40, resizable: false,
                 titleFormatter: function() {
                     return "&nbsp;";
@@ -17,7 +17,12 @@ function tabulatorSoftwareTable() {
             },
             {
                 title: "Software", resizable: false,
-                formatter: "html"
+                formatter: "html", sorter: function(a, b, aRow, bRow, column, dir, sorterParams) {
+                    let aText = $("a", a).text();
+                    let bText = $("a", b).text();
+                    console.log(aText, bText);
+                    return aText > bText; 
+                }
             }, {
                 title: "Category", resizable: false
             }, {
