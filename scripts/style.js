@@ -16,17 +16,17 @@ function tabulatorSoftwareTable() {
                 }
             },
             {
-                title: "Software",
+                title: "Software", resizable: false,
                 formatter: "html"
             }, {
-                title: "Category"
+                title: "Category", resizable: false
             }, {
-                title: "Audience"
+                title: "Audience", resizable: false
             }, {
-                title: "Description"
+                title: "Platform", resizable: false
             }, {
-                title: "Platform"
-            },
+                title: "Description", resizable: false
+            }
         ]
       });
 }
