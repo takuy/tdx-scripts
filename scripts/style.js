@@ -38,7 +38,7 @@ function tabulatorSoftwareTable() {
             }, {
                 title: "Platform", resizable: false
             }, {
-                title: "Description", resizable: false
+                title: "Description", resizable: false, visible: false
             }
         ]
       });
