@@ -58,8 +58,16 @@ jQuery(document).ready(function() {
     $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
 
+    if(jQuery('#divAttachments .js-attachments-body').data('attachmentsCount') == 0) {
+        jQuery('#divAttachments').hide();
+    }
+    
     if(jQuery('table[name="software_list"]').length) {
         tabulatorSoftwareTable();
+
+        // make the table page full width
+        $('#divMainContent').addClass('col-12').removeClass("col-md-8");
+        $('#divMainContent + div.col-md-4').hide();
         
         document.querySelector('input[name="software-search"]').addEventListener("keyup", updateFilter);
         
