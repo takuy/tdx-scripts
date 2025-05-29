@@ -18,3 +18,7 @@ div.panel-body a.btn {
 div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   cursor: default!important;
 }
+
+#btnUserProfileMenu {
+  color: #ffffff;
+}
