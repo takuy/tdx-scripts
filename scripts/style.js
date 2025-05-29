@@ -14,15 +14,23 @@ function tabulatorSoftwareTable() {
                 titleFormatter: function() {
                     return "&nbsp;";
                 }
-            },
-            {
-                title: "Software", resizable: false,
-                formatter: "html", sorter: function(a, b, aRow, bRow, column, dir, sorterParams) {
-                    let aText = $("a", a).text();
-                    let bText = $("a", b).text();
-                    console.log(aText, bText);
-                    return aText > bText; 
+            }, {
+                title: "SoftwareLink", resizable: false,
+                formatter: "html", visible: false
+            }, {
+                field: "softwaretitle", title: "Software", resizable: false, formatter: "link", formatterParams: {
+                  target: "_blank",
+                  url: function(cell) {
+                    return cell.getRow().getData()["servicelink"];
+                  },
+                  label: function(cell) { 
+                    return cell.getRow().getData()["softwaretitle"];
+                  }
                 }
+            }, {
+                title: "ServiceLink", resizable: false, visible: false
+            }, {
+                title: "SoftwareTitle", resizable: false, visible: false, formatter: "html"
             }, {
                 title: "Category", resizable: false
             }, {
