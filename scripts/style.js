@@ -1,10 +1,11 @@
 function tabulatorSoftwareTable() {
     window.$table = new Tabulator('table[name="software_list"]', {
-        layout:"fitColumns",
+        layout:"fitDataFill",
         pagination:true,
         paginationSize:10,
         paginationSizeSelector:[5, 10, 25, 50, 100, true],
         paginationCounter: "rows",
+        responsiveLayout: "collapse",
         columns: [
             {
                 title: "Cost",
