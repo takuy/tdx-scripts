@@ -1,6 +1,6 @@
 function tabulatorSoftwareTable() {
     window.$table = new Tabulator('table[name="software_list"]', {
-        layout:"fitColumns",
+        layout:"fitDataStretch",
         pagination:true,
         paginationSize:10,
         paginationSizeSelector:[5, 10, 25, 50, 100, true],
