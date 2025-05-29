@@ -5,7 +5,6 @@ function tabulatorSoftwareTable() {
         paginationSize:10,
         paginationSizeSelector:[5, 10, 25, 50, 100, true],
         paginationCounter: "rows",
-        responsiveLayout: "collapse",
         columns: [
             {
                 title: "Cost",
@@ -20,10 +19,14 @@ function tabulatorSoftwareTable() {
                 title: "Software",
                 formatter: "html"
             }, {
+                title: "Category"
+            }, {
                 title: "Audience"
             }, {
                 title: "Description"
-            }
+            }, {
+                title: "Platform"
+            },
         ]
       });
 }
