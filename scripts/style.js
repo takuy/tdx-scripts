@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
       });
       
       if(jQuery('select[name="role-filter"]').length) {
-        jQuery(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('select2:select select2:clear', function() {
+        jQuery(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('change.select2 select2:select select2:clear', function() {
             updateFilter();
         });
       } else {
