@@ -98,7 +98,7 @@ jQuery(document).ready(function() {
         
       $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').select2({
         placeholder: 'Click to select', 
-        allowClear: true, multiple: true, width: "style"
+        allowClear: true, width: "style"
       });
       
       if(jQuery('select[name="role-filter"]').length) {
