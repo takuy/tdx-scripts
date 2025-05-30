@@ -38,28 +38,37 @@ function tabulatorSoftwareTable() {
             }, {
                 title: "Platform", resizable: false
             }, {
-                title: "Description", resizable: false, visible: false
+                title: "Description", resizable: false
             }
         ]
       });
 }
 
 function updateFilter() {
-    let roles = jQuery('div[name="role-filter"] input:checked').map(function() { return $(this).val();}).get();
+    let roles = [];
+    if(jQuery('select[name="role-filter"]').length) {
+      roles = $('select[name="role-filter"]').select2('data').map(function(t) { return t.id });
+    } else {
+      roles = jQuery('div[name="role-filter"] input:checked').map(function() { return $(this).val();}).get();
+    }
+    let platforms = $('select[name="platform-filter"]').select2('data').map(function(t) { return t.id });
+    let categories = $('select[name="category-filter"]').select2('data').map(function(t) { return t.id });
+  
     let filterText = jQuery('input[name="software-search"]').val();
     
-    $('span[name="software-filter-list"]').text(roles.length > 0 ? roles.join(", ") : $('span[name="software-filter-list"]').data("default") );
-    
+    $('span[name="filtered-role"]').text(roles.length > 0 ? roles.join(", ") : $('span[name="filtered-role"]').data("default") );
+    $('span[name="filtered-category"]').text(categories.length > 0 ? categories.join(", ") : $('span[name="filtered-category"]').data("default") );
+    $('span[name="filtered-platform"]').text(platforms.length > 0 ? platforms.join(", ") : $('span[name="filtered-platform"]').data("default") );
+  
     $table.setFilter(function(data, params) {
-        let hasRoleMatch = data["audience"].split(", ").some(r=> params.roles.includes(r));
-        let considerRoleMatch = (params.roles.length) > 0 ? hasRoleMatch : 1;
-
+        let hasRoleMatch = (params.roles.length) > 0 ? data["audience"].split(", ").some(r=> params.roles.includes(r)) : 1;
+        let hasPlatformMatch = (params.platforms.length) > 0 ? data["platform"].split(", ").some(r=> params.platforms.includes(r)) : 1;
+        let hasCategoryMatch = (params.categories.length) > 0 ? data["category"].split(", ").some(r=> params.categories.includes(r)) : 1;  
+      
         let hasTextMatch = false;
         if (params.filterText) {
             for (prop in data) {
-                if(prop == "id") {
-                    continue;
-                }
+                if(prop == "id") { continue; }
                 if (data[prop] && data[prop].toLowerCase().indexOf(params.filterText.toLowerCase()) > -1) {
                     hasTextMatch |= true;
                 }
@@ -67,8 +76,9 @@ function updateFilter() {
         } else {
             hasTextMatch = true;
         }
-        return considerRoleMatch && hasTextMatch;
-    }, {roles: roles, filterText: filterText});
+      
+        return hasRoleMatch && hasPlatformMatch && hasCategoryMatch && hasTextMatch;
+    }, {roles: roles,  platforms: platforms, categories: categories, filterText: filterText});
 }
 
 jQuery(document).ready(function() {
@@ -86,11 +96,23 @@ jQuery(document).ready(function() {
         $('#divMainContent').addClass('col-12').removeClass("col-md-8");
         $('#divMainContent + div.col-md-4').hide();
         
-        document.querySelector('input[name="software-search"]').addEventListener("keyup", updateFilter);
-        
-        jQuery(document, 'div[name="role-filter"] input:checked').on('change', function() {
+      $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').select2({
+        placeholder: 'Click to select', 
+        allowClear: true, multiple: true, width: "style"
+      });
+      
+      if(jQuery('select[name="role-filter"]').length) {
+        jQuery(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('select2:select select2:clear', function() {
             updateFilter();
         });
+      } else {
+        jQuery(document, 'div[name="role-filter"] input:checked').on('change', function() {
+            updateFilter();
+          });
+      }
+
+        document.querySelector('input[name="software-search"]').addEventListener("keyup", updateFilter);
+
     }
 
     if(jQuery('table.simple-tabulator').length) {
