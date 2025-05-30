@@ -2,7 +2,6 @@ div.panel-body a.btn {
   white-space: normal; 
 }
 
-
 .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover {
   background-color: #a41e35;
   border-color: #a41e35;
@@ -21,4 +20,9 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
 
 #btnUserProfileMenu {
   color: #ffffff;
+}
+
+.form-group.input-group textarea.select2-search__field {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
