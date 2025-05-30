@@ -22,7 +22,12 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   color: #ffffff;
 }
 
-.form-group.input-group textarea.select2-search__field {
+.form-group.input-group .select2-container {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+}
+
+.form-group.input-group label.input-group-addon {
+  background-color: black;
+  color: white;
 }
