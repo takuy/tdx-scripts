@@ -126,6 +126,12 @@ jQuery(document).ready(function() {
     if(jQuery('table.simple-tabulator').length) {
         var toTabulatorify = jQuery('table.simple-tabulator');
         toTabulatorify.each(function() {
+            if ($(toTabulatorify).hasClass("tbl-full-width")) {
+                $('#divMainContent').addClass('col-12').removeClass("col-md-8");
+            } 
+            if ($(toTabulatorify).hasClass("hide-sidebar")) {
+                $('#divMainContent + div.col-md-4').hide();
+            }
             new Tabulator(this, {
                 layout:"fitData"
             });
