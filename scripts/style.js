@@ -120,7 +120,7 @@ function updateSoftwareFilter() {
 
     $table.setFilter(function(data, params) {
         let hasFilterablesMatch = false;
-        filterableItems.forEach(function(t) {
+        params.filterables.forEach(function(t) {
             hasFilterablesMatch |= tdx_utils.hasFilterMatch(t.selected, data[t.column]);
         });
       
