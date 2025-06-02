@@ -81,7 +81,7 @@ var tdx_utils = {
     hasFilterMatch: function(selected, data) {
         return (selected.length) > 0 ? data.split(", ").some(r=> selected.includes(r)) : 1;
     }
-}
+};
 
 function updateSoftwareFilter() {
     let filterableItems = [{ 
@@ -105,7 +105,7 @@ function updateSoftwareFilter() {
         let selected = tdx_utils.getSelectedItems(filterSelector);
         tdx_utils.setFilterDescription(selected, filterDescriber);
         t.selected = selected;
-    )};
+    });
 
     /*
     let roles = $('select[name="role-filter"]').select2('data').map(function(t) { return t.id });
