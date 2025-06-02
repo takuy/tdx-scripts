@@ -18,6 +18,10 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   cursor: default!important;
 }
 
+#content #divAttachments:has(.js-attachments-body[data-attachments-count='0']) {
+  display: none;
+}
+
 #btnUserProfileMenu {
   color: #ffffff;
 }
