@@ -101,7 +101,9 @@ jQuery(document).ready(function() {
         allowClear: true, width: "200px"
       });
 
-      $('button[name="filter-reset"]').click(function() {
+      $('button[name="filter-reset"]').click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
         $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').val(null).trigger('change');
         $('input[name="software-search"]').val(null);
         updateFilter();
