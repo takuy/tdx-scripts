@@ -127,7 +127,7 @@ jQuery(document).ready(function() {
         var toTabulatorify = jQuery('table.simple-tabulator');
         toTabulatorify.each(function() {
             new Tabulator(this, {
-                layout:"fitColumns"
+                layout:"fitDataStretch"
           });
         });
     }
