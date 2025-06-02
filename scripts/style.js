@@ -116,10 +116,10 @@ function tabulatorGroupTable() {
         columns: [
             {
                 title: "Helix Support Group", resizable: false, formatter: "html",
-                headerFilter: "input"
+                headerFilter: "input", headerFilterPlaceholder: "Type to filter..."
             }, {
                 title: "TDX Group Name", resizable: false, formatter: "html",
-                headerFilter: "input"
+                headerFilter: "input", headerFilterPlaceholder: "Type to filter..."
             }
         ]
     });   
