@@ -128,7 +128,6 @@ jQuery(document).ready(function() {
         toTabulatorify.each(function() {
             new Tabulator(this, {
                 layout:"fitData",
-                autoColumns: true,
                 autoColumnsDefinitions:function(definitions){
                     //definitions - array of column definition objects
             
