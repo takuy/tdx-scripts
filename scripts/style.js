@@ -94,13 +94,19 @@ jQuery(document).ready(function() {
 
         // make the table page full width
         $('#divMainContent').addClass('col-12').removeClass("col-md-8");
-        $('#divMainContent + div.col-md-4').hide();
+        //$('#divMainContent + div.col-md-4').hide();
         
       $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').select2({
         placeholder: 'Click to select', 
         allowClear: true, width: "200px"
       });
-      
+
+      $('button[name="filter-reset"]').click(function() {
+        $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').val(null).trigger('change');
+        $('input[name="software-search"]').val(null);
+        updateFilter();
+      });
+        
       if(jQuery('select[name="role-filter"]').length) {
         jQuery(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('change.select2 select2:select select2:clear', function() {
             updateFilter();
