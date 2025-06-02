@@ -127,16 +127,7 @@ jQuery(document).ready(function() {
         var toTabulatorify = jQuery('table.simple-tabulator');
         toTabulatorify.each(function() {
             new Tabulator(this, {
-                layout:"fitData",
-                autoColumnsDefinitions:function(definitions){
-                    //definitions - array of column definition objects
-            
-                    definitions.forEach((column) => {
-                        column.headerFilter = true; // add header filter to every column
-                    });
-            
-                    return definitions;
-                },
+                layout:"fitData"
             });
         });
     }
