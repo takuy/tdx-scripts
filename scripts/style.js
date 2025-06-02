@@ -41,10 +41,39 @@ function tabulatorSoftwareTable() {
                 title: "Description", resizable: false, visible: false
             }
         ]
-      });
+    });   
+
+    // make the table page full width
+    $('#divMainContent').addClass('col-12').removeClass("col-md-8");
+    //$('#divMainContent + div.col-md-4').hide();
+    
+    $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').select2({
+        placeholder: 'Click to select', 
+        allowClear: true, width: "200px"
+    });
+
+    $('button[name="filter-reset"]').click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').val(null).trigger('change');
+        $('input[name="software-search"]').val(null);
+        updateSoftwareFilter();
+    });
+
+    if(jQuery('select[name="role-filter"]').length) {
+        jQuery(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('change.select2 select2:select select2:clear', function() {
+            updateSoftwareFilter();
+        });
+    } else {
+        jQuery(document, 'div[name="role-filter"] input:checked').on('change', function() {
+            updateSoftwareFilter();
+        });
+    }
+
+    document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter);
 }
 
-function updateFilter() {
+function updateSoftwareFilter() {
     let roles = [];
     if(jQuery('select[name="role-filter"]').length) {
       roles = $('select[name="role-filter"]').select2('data').map(function(t) { return t.id });
@@ -81,6 +110,44 @@ function updateFilter() {
     }, {roles: roles,  platforms: platforms, categories: categories, filterText: filterText});
 }
 
+function tabulatorGroupTable() {
+    window.$table = new Tabulator('table[name="group-table"]', {
+        layout:"fitDataStretch",
+        columns: [
+            {
+                title: "Helix Support Group", resizable: false, formatter: "html",
+                headerFilter: "input"
+            }, {
+                title: "TDX Group Name", resizable: false, formatter: "html",
+                headerFilter: "input"
+            }
+        ]
+    });   
+
+    $('#divMainContent').addClass('col-12').removeClass("col-md-8");
+
+    document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter);
+}
+
+function updateGroupTableFilter() {
+    let filterText = jQuery('input[name="group-search"]').val();  
+    $table.setFilter(function(data, params) {
+        let hasTextMatch = false;
+        if (params.filterText) {
+            for (prop in data) {
+                if(prop == "id") { continue; }
+                if (data[prop] && data[prop].toLowerCase().indexOf(params.filterText.toLowerCase()) > -1) {
+                    hasTextMatch |= true;
+                }
+            }
+        } else {
+            hasTextMatch = true;
+        }
+      
+        return  hasTextMatch;
+    }, {filterText: filterText});
+}
+
 jQuery(document).ready(function() {
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
@@ -91,38 +158,12 @@ jQuery(document).ready(function() {
     
     if(jQuery('table[name="software_list"]').length) {
         tabulatorSoftwareTable();
-
-        // make the table page full width
-        $('#divMainContent').addClass('col-12').removeClass("col-md-8");
-        //$('#divMainContent + div.col-md-4').hide();
-        
-      $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').select2({
-        placeholder: 'Click to select', 
-        allowClear: true, width: "200px"
-      });
-
-      $('button[name="filter-reset"]').click(function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').val(null).trigger('change');
-        $('input[name="software-search"]').val(null);
-        updateFilter();
-      });
-        
-      if(jQuery('select[name="role-filter"]').length) {
-        jQuery(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('change.select2 select2:select select2:clear', function() {
-            updateFilter();
-        });
-      } else {
-        jQuery(document, 'div[name="role-filter"] input:checked').on('change', function() {
-            updateFilter();
-          });
-      }
-
-        document.querySelector('input[name="software-search"]').addEventListener("keyup", updateFilter);
-
     }
 
+    if(jQuery('table[name="group-table"]').length) {
+        tabulatorGroupTable();
+    }
+    
     if(jQuery('table.simple-tabulator').length) {
         var toTabulatorify = jQuery('table.simple-tabulator');
         toTabulatorify.each(function() {
