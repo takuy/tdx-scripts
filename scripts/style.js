@@ -48,7 +48,7 @@ function tabulatorSoftwareTable() {
     //$('#divMainContent + div.col-md-4').hide();
     
     $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').each(function() {
-        $(this).attr('id') = $(this).attr('name');
+        $(this).attr('id', $(this).attr('name'));
         $(this).select2({
             placeholder: 'Click to select', 
             allowClear: true, width: "200px"
@@ -68,7 +68,7 @@ function tabulatorSoftwareTable() {
     });
 
     document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter);
-    $('input[name="software-search"]').attr('id') = $('input[name="software-search"]').attr('name');
+    $('input[name="software-search"]').attr('id', $('input[name="software-search"]').attr('name'));
 }
 
 var tdx_utils = {
