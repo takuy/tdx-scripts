@@ -1,4 +1,4 @@
-cfunction tabulatorSoftwareTable() {
+function tabulatorSoftwareTable() {
     // make the table page full width
     $('#divMainContent').addClass('col-12').removeClass("col-md-8");
     //$('#divMainContent + div.col-md-4').hide();
