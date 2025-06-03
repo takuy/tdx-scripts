@@ -114,6 +114,7 @@ var tdx_utils = {
 };
 
 function updateSoftwareFilter(filterableItems) {
+    console.log(filterableItems);
     filterableItems.forEach(function(t) {
         // array of selected items
         let selected = tdx_utils.getSelectedItems(t.filterSelector);
