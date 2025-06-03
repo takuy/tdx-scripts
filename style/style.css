@@ -22,7 +22,7 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   display: none;
 }
 
-#divLogo button.settings-button.dropdown-toggle {
+#divPageHeader button.settings-button.dropdown-toggle {
   color: #ffffff;
 }
 
