@@ -1,4 +1,8 @@
 function tabulatorSoftwareTable() {
+    // make the table page full width
+    $('#divMainContent').addClass('col-12').removeClass("col-md-8");
+    //$('#divMainContent + div.col-md-4').hide();
+    
     window.$table = new Tabulator('table[name="software_list"]', {
         layout:"fitDataStretch",
         pagination:true,
@@ -43,28 +47,51 @@ function tabulatorSoftwareTable() {
         ]
     });   
 
-    // make the table page full width
-    $('#divMainContent').addClass('col-12').removeClass("col-md-8");
-    //$('#divMainContent + div.col-md-4').hide();
+    let filterableItems = [{ 
+            "column": "audience",
+            "filter": "role",
+        }, { 
+            "column": "platform",  
+            "filter": "platform", 
+        }, { 
+            "column": "category",
+            "filter": "category" 
+        }
+    ];
+
+    let allFilterableSelectors = [];
+    let allFilterableSelectorsText = "";
     
-    $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').each(function() {
-        $(this).attr('id', $(this).attr('name'));
-        $(this).select2({
-            placeholder: 'Click to select', 
-            allowClear: true, width: "200px"
+    filterableItems.forEach(function(t) {
+        let filterSelector = `select[name="${t.filter}-filter"]`;
+        let filterDescriber = `span[name="filtered-${t.filter}"]`;
+        t.selector = filterSelector;
+        t.describer = filterDescriber;
+
+        allFilterableSelectors.push(filterSelector);
+        
+        $(filterSelector).each(function() {
+            $(this).attr('id', $(this).attr('name'));
+            $(this).select2({
+                placeholder: 'Click to select', 
+                allowClear: true, width: "200px"
+            });
         });
+        
     });
+
+    allFilterableSelectorsText = allFilterableSelectors.join(", ");
 
     $('button[name="filter-reset"]').click(function(event) {
         event.preventDefault();
         event.stopPropagation();
-        $('select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').val(null).trigger('change');
+        $(allFilterableSelectorsText).val(null).trigger('change');
         $('input[name="software-search"]').val(null);
-        updateSoftwareFilter();
+        updateSoftwareFilter(filterableItems);
     });
 
-    $(document, 'select[name="role-filter"], select[name="platform-filter"], select[name="category-filter"]').on('change.select2 select2:select select2:clear', function() {
-        updateSoftwareFilter();
+    $(document, allFilterableSelectorsText).on('change.select2 select2:select select2:clear', function() {
+        updateSoftwareFilter(filterableItems);
     });
 
     document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter);
@@ -80,48 +107,25 @@ var tdx_utils = {
     },
     hasFilterMatch: function(selected, data) {
         return (selected.length) > 0 ? data.split(", ").some(r=> selected.includes(r)) : 1;
+    },
+    getAllSelectors: function(filterableItems) {
+        return filterableItems.map((t) => t.selector);
     }
 };
 
-function updateSoftwareFilter() {
-    let filterableItems = [{ 
-            "column": "audience",
-            "filter": "role",
-        }, { 
-            "column": "platform",  
-            "filter": "platform", 
-        }, { 
-            "column": "category",
-            "filter": "category" 
-        }
-    ];
+function updateSoftwareFilter(filterableItems) {
     filterableItems.forEach(function(t) {
-        let filterSelector = `select[name="${t.filter}-filter"]`;
-        let filterDescriber = `span[name="filtered-${t.filter}"]`;
-        t.selector = filterSelector;
-        t.describer = filterDescriber;
-
         // array of selected items
-        let selected = tdx_utils.getSelectedItems(filterSelector);
-        tdx_utils.setFilterDescription(selected, filterDescriber);
+        let selected = tdx_utils.getSelectedItems(t.filterSelector);
+        tdx_utils.setFilterDescription(selected, t.filterDescriber);
         t.selected = selected;
     });
-
-    /*
-    let roles = $('select[name="role-filter"]').select2('data').map(function(t) { return t.id });
-    let platforms = $('select[name="platform-filter"]').select2('data').map(function(t) { return t.id });
-    let categories = $('select[name="category-filter"]').select2('data').map(function(t) { return t.id });
-    $('span[name="filtered-role"]').text(roles.length > 0 ? roles.join(", ") : $('span[name="filtered-role"]').data("default") );
-    $('span[name="filtered-category"]').text(categories.length > 0 ? categories.join(", ") : $('span[name="filtered-category"]').data("default") );
-    $('span[name="filtered-platform"]').text(platforms.length > 0 ? platforms.join(", ") : $('span[name="filtered-platform"]').data("default") );
-    */
 
     let filterText = jQuery('input[name="software-search"]').val();
 
     $table.setFilter(function(data, params) {
         let hasFilterablesMatch = true;
         params.filterables.forEach(function(t) {
-            console.log(t.selected, data[t.column], tdx_utils.hasFilterMatch(t.selected, data[t.column]));
             hasFilterablesMatch &= tdx_utils.hasFilterMatch(t.selected, data[t.column]);
         });
       
