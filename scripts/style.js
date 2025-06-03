@@ -1,4 +1,4 @@
-function tabulatorSoftwareTable() {
+cfunction tabulatorSoftwareTable() {
     // make the table page full width
     $('#divMainContent').addClass('col-12').removeClass("col-md-8");
     //$('#divMainContent + div.col-md-4').hide();
@@ -94,7 +94,7 @@ function tabulatorSoftwareTable() {
         updateSoftwareFilter(filterableItems);
     });
 
-    document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter);
+    document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter(filterableItems));
     $('input[name="software-search"]').attr('id', $('input[name="software-search"]').attr('name'));
 }
 
@@ -114,11 +114,10 @@ var tdx_utils = {
 };
 
 function updateSoftwareFilter(filterableItems) {
-    console.log(filterableItems);
     filterableItems.forEach(function(t) {
         // array of selected items
-        let selected = tdx_utils.getSelectedItems(t.filterSelector);
-        tdx_utils.setFilterDescription(selected, t.filterDescriber);
+        let selected = tdx_utils.getSelectedItems(t.selector);
+        tdx_utils.setFilterDescription(selected, t.describer);
         t.selected = selected;
     });
 
