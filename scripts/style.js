@@ -94,7 +94,9 @@ cfunction tabulatorSoftwareTable() {
         updateSoftwareFilter(filterableItems);
     });
 
-    document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter(filterableItems));
+    document.querySelector('input[name="software-search"]').addEventListener("keyup", function() { 
+        updateSoftwareFilter(filterableItems) 
+    });
     $('input[name="software-search"]').attr('id', $('input[name="software-search"]').attr('name'));
 }
 
