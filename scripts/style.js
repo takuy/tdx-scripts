@@ -119,7 +119,7 @@ function updateSoftwareFilter() {
     let filterText = jQuery('input[name="software-search"]').val();
 
     $table.setFilter(function(data, params) {
-        let hasFilterablesMatch = false;
+        let hasFilterablesMatch = true;
         params.filterables.forEach(function(t) {
             console.log(t.selected, data[t.column], tdx_utils.hasFilterMatch(t.selected, data[t.column]));
             hasFilterablesMatch &= tdx_utils.hasFilterMatch(t.selected, data[t.column]);
