@@ -1,0 +1,37 @@
+div.panel-body a.btn {
+  white-space: normal; 
+}
+
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover {
+  background-color: #a41e35;
+  border-color: #a41e35;
+  color: #ffffff;
+}
+
+.btn-primary.focus:not(.active), .btn-primary:focus:not(.active) {
+  background-color: #222222;
+  border-color: #222222;
+  color: #ffffff;
+}
+
+div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
+  cursor: default!important;
+}
+
+#content #divAttachments:has(.js-attachments-body[data-attachments-count='0']) {
+  display: none;
+}
+
+#divPageHeader button.settings-button.dropdown-toggle, #btnUserProfileMenu {
+  color: #ffffff;
+}
+
+.form-group.input-group .select2-container {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.form-group.input-group label.input-group-addon {
+  background-color: black;
+  color: white;
+}
