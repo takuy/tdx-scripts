@@ -221,18 +221,20 @@ jQuery(document).ready(function() {
     $('h1,h2,h3,h4,h5').each(function() {
         if(!$(this).attr('id')) {
             let new_id_source = $(this).attr('name') || $(this).text();
-            let new_id = new_id_source.replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').toLowerCase();
+            let new_id = new_id_source.trim().replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
             $(this).attr('id', new_id)
         }
     });
-    tocbot.init({
-        tocSelector: "div[name='toc']",
-        contentSelector: 'div.page',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h1, h2, h3',
-        hasInnerContainers: true,
-        headingsOffset: 40,
-        scrollSmoothOffset: -40
-    });
-
+    if ($("meta[property='og:type']").attr('content') == "article") {
+        $('#ctl00_ctl00_cpContent_cpContent_divTags').append("<div class='temple_toc pull-right' name='toc'></div>");
+        tocbot.init({
+            tocSelector: "div.temple_toc",
+            contentSelector: 'div.page',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3',
+            hasInnerContainers: true,
+            headingsOffset: 40,
+            scrollSmoothOffset: -40
+        });
+    }
 });
