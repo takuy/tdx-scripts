@@ -225,16 +225,40 @@ jQuery(document).ready(function() {
             $(this).attr('id', new_id)
         }
     });
+
+    $("#divMainContent + div.col-md-4").css({'overflow': 'auto', 'height': '700px'}).wrapInner("<div id='tool-sidebar' style='height: 700px; overflow: auto;'>")
+
+    $(window).scroll(function(){
+        if($(window).scrollTop() >  485) {
+        $('#tool-sidebar').addClass('end');
+        $('#tool-sidebar').removeClass('fixed');
+        }else{
+        $('#tool-sidebar').addClass('fixed');
+        $('#tool-sidebar').removeClass('end');
+        }
+    });
+
     if ($("meta[property='og:type']").attr('content') == "article") {
-        $('#ctl00_ctl00_cpContent_cpContent_divTags').append("<div class='temple_toc pull-right' name='toc'></div>");
+        $('#ctl00_ctl00_cpContent_cpContent_divTags').append(`
+            <div class='temple_toc-parent pull-right' name='toc'>
+                <div class="temple_toc panel panel-default">
+                    <div class="panel-heading">Table of Contents</div>
+                    <div class='temple_toc'></div>
+                </div>
+            </div>`);
         tocbot.init({
             tocSelector: "div.temple_toc",
-            contentSelector: 'div.page',
+            contentSelector: 'div#divMainContent',
             // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
+            headingSelector: 'h2, h3, h4',
             hasInnerContainers: true,
+            listClass: 'list-group',
+            listItemClass: 'list-group-item',
+            activeListItemClass: 'list-group-item-info',
+            activeLinkClass: 'list-link-active',
+            linkClass: 'list-link',
             headingsOffset: 40,
-            scrollSmoothOffset: -40
+            scrollSmoothOffset: -40,
         });
     }
 });

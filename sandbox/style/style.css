@@ -35,3 +35,13 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   background-color: black;
   color: white;
 }
+
+#tool-sidebar.fixed {
+  position: fixed;
+  right: 10px;
+}
+#tool-sidebar.end {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
