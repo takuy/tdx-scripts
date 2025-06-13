@@ -229,12 +229,13 @@ jQuery(document).ready(function() {
     $("#divMainContent + div.col-md-4").css({'overflow': 'auto', 'height': '700px'}).wrapInner("<div id='tool-sidebar' class='fixed' style='height: 700px; overflow: auto;'>")
 
     $(window).scroll(function(){
-        if($(window).scrollTop() >  485) {
-        $('#tool-sidebar').addClass('end');
-        $('#tool-sidebar').removeClass('fixed');
-        }else{
-        $('#tool-sidebar').addClass('fixed');
-        $('#tool-sidebar').removeClass('end');
+        var headerHeight = $('#divMstrHeader').outerHeight(true);
+        if(($('footer').position()['top'] - $(window).scrollTop() - $('footer').outerHeight()) >  430) {
+            $('#tool-sidebar').addClass('end');
+            $('#tool-sidebar').removeClass('fixed');
+        } else{
+            $('#tool-sidebar').addClass('fixed');
+            $('#tool-sidebar').removeClass('end');
         }
     });
 
