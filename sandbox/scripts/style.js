@@ -231,7 +231,8 @@ jQuery(document).ready(function() {
     $(window).scroll(function(){
         var headerHeight = $('#divMstrHeader').outerHeight(true);
         console.log($(window).scrollTop());
-        console.log(headerHeight)
+        console.log(headerHeight);
+        console.log($(window).scrollTop() > headerHeight);
         if(($('footer').position()['top'] - $(window).scrollTop() - $('footer').outerHeight()) >  430) {
             $('#tool-sidebar').addClass('end');
             $('#tool-sidebar').removeClass('fixed');
