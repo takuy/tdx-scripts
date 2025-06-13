@@ -226,7 +226,7 @@ jQuery(document).ready(function() {
         }
     });
 
-    $("#divMainContent + div.col-md-4").css({'overflow': 'auto', 'height': '700px'}).wrapInner("<div id='tool-sidebar' style='height: 700px; overflow: auto;'>")
+    $("#divMainContent + div.col-md-4").css({'overflow': 'auto', 'height': '700px'}).wrapInner("<div id='tool-sidebar' class='fixed' style='height: 700px; overflow: auto;'>")
 
     $(window).scroll(function(){
         if($(window).scrollTop() >  485) {
