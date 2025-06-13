@@ -233,13 +233,16 @@ jQuery(document).ready(function() {
         if(($('footer').position()['top'] - $(window).scrollTop() - $('footer').outerHeight()) >  430) {
             $('#tool-sidebar').addClass('end');
             $('#tool-sidebar').removeClass('fixed');
-        } else{
+        } else if ($(window).scrollTop() > headerHeight) {
             $('#tool-sidebar').addClass('fixed');
+            $('#tool-sidebar').removeClass('end');
+        } else {
+            $('#tool-sidebar').removeClass('fixed');
             $('#tool-sidebar').removeClass('end');
         }
     });
 
-    if ($("meta[property='og:type']").attr('content') == "article") {
+    if($("meta[property='og:type']").attr('content') == "article") {
         $('#ctl00_ctl00_cpContent_cpContent_divTags').append(`
             <div class='temple_toc-parent pull-right' name='toc'>
                 <div class="temple_toc panel panel-default">

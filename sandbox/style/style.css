@@ -38,6 +38,7 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
 
 #tool-sidebar.fixed {
   position: fixed;
+  top: '200px';
 }
 
 #tool-sidebar.end {
