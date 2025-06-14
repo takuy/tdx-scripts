@@ -57,9 +57,10 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   }
 
 }
-@media only screen and (max-width : 767.9999999px) {
+
+@media only screen and (min-width : 767.9999999px) and (max-width : 991.9999999px){
   .temple_toc-parent {
-    width: 400px;
+    width: 300px;
     float: right;
   }
 }
