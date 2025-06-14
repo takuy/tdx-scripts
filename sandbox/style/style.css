@@ -36,7 +36,9 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   color: white;
 }
 
-
+  .temple_toc-parent {
+    padding-top: 10px;
+  }
 
 @media only screen and (min-width : 768px) {
   #divMainContent + div.col-md-4 {

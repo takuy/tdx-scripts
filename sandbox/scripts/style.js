@@ -246,7 +246,7 @@ jQuery(document).ready(function() {
     });
 */
     if($("meta[property='og:type']").attr('content') == "article") {
-        $('#ctl00_ctl00_cpContent_cpContent_divTags').append(`
+        $('#divMainContent > h1').append(`
             <div class='temple_toc-parent pull-right' name='toc'>
                 <div class="temple_toc panel panel-default">
                     <div class="panel-heading">Table of Contents</div>
