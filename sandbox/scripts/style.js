@@ -185,6 +185,17 @@ function updateGroupTableFilter() {
     }, {filterText: filterText});
 }
 
+document.addEventListener('DOMContentLoaded', function(event) {
+    let headers = document.querySelectorAll('h1,h2,h3,h4,h5');
+    headers.forEach(function(elem) {
+        if(!elem.id) {
+            let new_id_source = elem.name || elem.innerText;
+            let new_id = new_id_source.trim().replaceAll(/\s{2}/gm,'').replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
+            elem.id = new_id;
+        }
+    });
+});
+
 jQuery(document).ready(function() {
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/sandbox/style/style.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
@@ -217,7 +228,7 @@ jQuery(document).ready(function() {
         });
     }
     
-
+/*
     $('h1,h2,h3,h4,h5').each(function() {
         if(!$(this).attr('id')) {
             let new_id_source = $(this).attr('name') || $(this).text();
@@ -225,7 +236,7 @@ jQuery(document).ready(function() {
             $(this).attr('id', new_id)
         }
     });
-
+*/
     $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
 
 
@@ -266,3 +277,4 @@ jQuery(document).ready(function() {
         }).resize();
     }
 });
+
