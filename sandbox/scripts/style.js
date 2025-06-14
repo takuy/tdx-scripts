@@ -228,6 +228,7 @@ jQuery(document).ready(function() {
 
     $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
 
+
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#tool-sidebar').prepend(`
             <div class='temple_toc-parent pull-right' name='toc'>
@@ -251,6 +252,17 @@ jQuery(document).ready(function() {
             scrollSmoothOffset: -250,
             enableUrlHashUpdateOnScroll: true
         });
-        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`)
+        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
+
+        $(window).resize(function () {
+            if($(window).width() <= 975) {
+                expectedParent = `#${targetDiv}`;
+            } else {
+                expectedParent = '#tool-sidebar';
+            }
+            if (expectedParent != $('.temple_toc-parent').parent().attr('id')) {
+                $(expectedParent).prepend($('.temple_toc-parent'));
+            };
+        }).resize();
     }
 });
