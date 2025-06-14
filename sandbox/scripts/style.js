@@ -227,35 +227,18 @@ jQuery(document).ready(function() {
     });
 
     $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
-/*
-    $(window).scroll(function(){
-        var headerHeight = $('#divMstrHeader').outerHeight(true);
-        console.log($(window).scrollTop());
-        console.log(headerHeight);
-        console.log($(window).scrollTop() > headerHeight);
-        if(($('footer').position()['top'] - $(window).scrollTop() - $('footer').outerHeight()) >  430) {
-            $('#tool-sidebar').addClass('end');
-            $('#tool-sidebar').removeClass('fixed');
-        } else if ($(window).scrollTop() > headerHeight) {
-            $('#tool-sidebar').addClass('fixed');
-            $('#tool-sidebar').removeClass('end');
-        } else {
-            $('#tool-sidebar').removeClass('fixed');
-            $('#tool-sidebar').removeClass('end');
-        }
-    });
-*/
+
     if($("meta[property='og:type']").attr('content') == "article") {
-        $('#divMainContent > h1').after(`
+        $('#tool-sidebar').prepend(`
             <div class='temple_toc-parent pull-right' name='toc'>
-                <div class="temple_toc panel panel-default">
-                    <div class="panel-heading">Table of Contents</div>
+                <div class="panel panel-default">
                     <div class='temple_toc'></div>
                 </div>
             </div>`);
+        targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id')
         tocbot.init({
             tocSelector: "div.temple_toc",
-            contentSelector: 'div#divMainContent',
+            contentSelector: `div#${targetDiv}`,
             // Which headings to grab inside of the contentSelector element.
             headingSelector: 'h2, h3, h4',
             hasInnerContainers: true,
@@ -267,5 +250,6 @@ jQuery(document).ready(function() {
             headingsOffset: 40,
             scrollSmoothOffset: -40,
         });
+        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`)
     }
 });
