@@ -226,8 +226,8 @@ jQuery(document).ready(function() {
         }
     });
 
-    $("#divMainContent + div.col-md-4").css({'overflow': 'auto', 'height': '700px'}).wrapInner("<div id='tool-sidebar' class='fixed' style='height: 700px; overflow: auto;'>")
-
+    $("#divMainContent + div.col-md-4").css({'height': '700px'}).wrapInner("<div id='tool-sidebar' class='fixed' style='height: 700px; overflow: auto;'>")
+/*
     $(window).scroll(function(){
         var headerHeight = $('#divMstrHeader').outerHeight(true);
         console.log($(window).scrollTop());
@@ -244,7 +244,7 @@ jQuery(document).ready(function() {
             $('#tool-sidebar').removeClass('end');
         }
     });
-
+*/
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#ctl00_ctl00_cpContent_cpContent_divTags').append(`
             <div class='temple_toc-parent pull-right' name='toc'>
