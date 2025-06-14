@@ -235,7 +235,7 @@ jQuery(document).ready(function() {
                     <div class='temple_toc'></div>
                 </div>
             </div>`);
-        targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id')
+        targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
         tocbot.init({
             tocSelector: "div.temple_toc",
             contentSelector: `div#${targetDiv}`,
@@ -247,8 +247,9 @@ jQuery(document).ready(function() {
             activeListItemClass: 'list-group-item-info',
             activeLinkClass: 'list-link-active',
             linkClass: 'list-link',
-            headingsOffset: 40,
-            scrollSmoothOffset: -40,
+            headingsOffset: 250,
+            scrollSmoothOffset: -250,
+            enableUrlHashUpdateOnScroll: true
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`)
     }
