@@ -35,9 +35,22 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   background-color: black;
   color: white;
 }
+
+
+
 @media only screen and (min-width : 768px) {
+  #divMainContent + div.col-md-4 {
+    position: sticky; 
+    top: 250px;
+  }
+
   #tool-sidebar {
-    position: sticky;
-    top: 200px;
+    height: 500px;
+    overflow: auto;
+  }
+
+  .temple_toc-parent {
+    position: sticky; 
+    top: 250px;
   }
 }

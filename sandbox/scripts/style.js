@@ -226,7 +226,7 @@ jQuery(document).ready(function() {
         }
     });
 
-    $("#divMainContent + div.col-md-4").css({'height': '700px'}).wrapInner("<div id='tool-sidebar' class='fixed' style='height: 700px; overflow: auto;'>")
+    $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
 /*
     $(window).scroll(function(){
         var headerHeight = $('#divMstrHeader').outerHeight(true);
