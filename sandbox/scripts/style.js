@@ -185,7 +185,7 @@ function updateGroupTableFilter() {
     }, {filterText: filterText});
 }
 
-document.querySelectorAll('h1,h2,h3,h4,h5').headers.forEach(function(elem) {
+document.querySelectorAll('h1,h2,h3,h4,h5').forEach(function(elem) {
     if(!elem.id) {
         let new_id_source = elem.name || elem.innerText;
         let new_id = new_id_source.trim().replaceAll(/\s{2}/gm,'').replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
