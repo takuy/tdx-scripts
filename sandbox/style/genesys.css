@@ -24,6 +24,9 @@
 
 #offlineChatBody {
   padding-bottom: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 20px;
 }
 .cx-form-inputs > table > tbody > tr > td {
   padding-bottom: 0.5em !important;
