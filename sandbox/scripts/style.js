@@ -254,14 +254,16 @@ jQuery(document).ready(function() {
             listClass: 'list-group',
             listItemClass: 'list-group-item',
             activeListItemClass: 'list-group-item-info',
-            activeLinkClass: 'list-link-active',
+            activeLinkClass: '',
             linkClass: 'list-link',
             headingsOffset: 250,
             scrollSmoothOffset: -250,
-            enableUrlHashUpdateOnScroll: true
+            /*enableUrlHashUpdateOnScroll: true */
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
-
+        
+        document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
+        
         $(window).resize(function () {
             if($(window).width() <= 975) {
                 expectedParent = `#${targetDiv}`;
