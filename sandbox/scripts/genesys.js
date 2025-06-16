@@ -1,5 +1,6 @@
 
 jQuery(function() {
+    $('head').append(`<script src="https://apps.mypurecloud.com/widgets/9.0/cxbus.min.js" onload="javascript:CXBus.configure({debug:false,pluginsPath:'https://apps.mypurecloud.com/widgets/9.0/plugins/'}); CXBus.loadPlugin('widgets-core');"></script>`);
     jQuery.getScript(
         "https://tuhelp.temple.edu/public/chatbottom.js", function() { 
         jQuery.getScript(
@@ -29,6 +30,7 @@ jQuery(function() {
                 });
         })
     });
+
 });
 
 
