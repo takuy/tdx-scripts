@@ -16,7 +16,7 @@ jQuery(function() {
                     var id = "e51ca198-18ee-4891-9ae2-29627dd92c16" // dev deployment
                     const currentUrl = window.location.hostname;
 
-                    if (currentUrl === "tuhelp.temple.edu") {
+                    if (currentUrl === "help.temple.edu") {
                         id = "6195ecc5-05bf-4e9b-a977-5bea319e7ee7" // prod deployment
                     }
 
