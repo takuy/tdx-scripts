@@ -35,3 +35,36 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   background-color: black;
   color: white;
 }
+
+.temple_toc-parent {
+  max-height: 300px;
+  width: 100%;
+}
+
+.temple_toc .list-group {
+  margin-bottom: 0;
+}
+
+a.DetailAction:hover, button.DetailAction:hover{
+  color: white;
+}
+
+@media only screen and (min-width : 768px) {
+  #divMainContent + div.col-md-4 {
+    position: sticky; 
+    top: 250px;
+  }
+  
+  #tool-sidebar {
+    height: 500px;
+    overflow: auto;
+  }
+
+}
+
+@media only screen and (min-width : 767.9999999px) and (max-width : 991.9999999px){
+  .temple_toc-parent {
+    width: 300px;
+    float: right;
+  }
+}
