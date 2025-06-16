@@ -1,0 +1,227 @@
+
+#startNewConversation_text, .startNewButton {
+    display: none;
+}
+
+.Cx-MuiButtonBase-root {
+
+}
+
+.cx-messenger-6uai9c {
+    display: none;
+}
+
+.cx-messenger-13ya4ni {
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 0px;
+
+    & > button {
+    background: black;
+    }
+}
+#offlinechatrequest {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+#offlineChatBody {
+  padding-bottom: 30px;
+}
+.cx-form-inputs > table > tbody > tr > td {
+  padding-bottom: 0.5em !important;
+  padding-left: 0.5em !important;
+}
+
+
+#startNewConversation_text, .startNewButton {
+  display: none;
+}
+
+.Cx-MuiButtonBase-root {
+
+}
+
+.cx-messenger-6uai9c {
+  display: none;
+}
+
+.cx-messenger-13ya4ni {
+  cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: 0px;
+
+  & > button {
+    background: black;
+  }
+}
+
+/**
+* @name common-theme-light.less
+* @desc less file for light theme styles
+*/
+/* Convert to CSS using online tools such as http://less2css.org/ */
+/* Color Palette */
+/*
+	Light Theme Color Overrides
+*/
+.cx-widget.cx-theme-hdtheme {
+  color: #444A52;
+  background-color: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-overlay {
+  background-color: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-svg-icon-tone1 {
+  fill: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-svg-icon-tone2 {
+  fill: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-svg-icon-shadow1 {
+  fill: #000000;
+  opacity: 0.2;
+}
+.cx-widget.cx-theme-hdtheme .cx-svg-icon-shadow2 {
+  fill: #000000;
+  opacity: 0.1;
+}
+.cx-widget.cx-theme-hdtheme * {
+  border-color: #DAE1E8 !important;
+}
+.cx-widget.cx-theme-hdtheme .cx-titlebar .cx-title {
+  color: #444A52;
+}
+.cx-widget.cx-theme-hdtheme .cx-buttons-window-control .cx-svg-icon-tone1 {
+  fill: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-input-icon-overlay .cx-svg-icon-tone1 {
+  fill: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme label {
+  color: #444A52;
+}
+.cx-widget.cx-theme-hdtheme a {
+  color: #5081E1;
+}
+.cx-widget.cx-theme-hdtheme a:hover {
+  color: #444A52;
+}
+.cx-widget.cx-theme-hdtheme .cx-dropdown {
+  color: black;
+}
+.cx-widget.cx-theme-hdtheme .cx-icon-alert-circle {
+  color: #EA4F6B;
+}
+.cx-widget.cx-theme-hdtheme .cx-footer {
+  color: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-footer * {
+  fill: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-form-control.cx-error {
+  border-color: #EA4F6B;
+}
+.cx-widget.cx-theme-hdtheme .cx-form-control::placeholder {
+  color: #C5CCD6;
+}
+.cx-widget.cx-theme-hdtheme .cx-form-control:-moz-placeholder {
+  color: #C5CCD6;
+}
+.cx-widget.cx-theme-hdtheme .cx-form-control::-moz-placeholder {
+  color: #C5CCD6;
+}
+.cx-widget.cx-theme-hdtheme .cx-form-control:-ms-input-placeholder {
+  color: #C5CCD6;
+}
+.cx-widget.cx-theme-hdtheme .cx-form-control::-webkit-input-placeholder {
+  color: #C5CCD6;
+}
+.cx-widget.cx-theme-hdtheme input:focus,
+.cx-widget.cx-theme-hdtheme textarea:focus,
+.cx-widget.cx-theme-hdtheme .cx-btn:focus,
+.cx-widget.cx-theme-hdtheme .cx-button-group button:focus,
+.cx-widget.cx-theme-hdtheme .cx-form-control:focus {
+  border-color: #75A8FF !important;
+}
+.cx-widget.cx-theme-hdtheme input[type="text"],
+.cx-widget.cx-theme-hdtheme input[type="email"],
+.cx-widget.cx-theme-hdtheme input[type="tel"],
+.cx-widget.cx-theme-hdtheme textarea {
+  background-color: #FDFDFD;
+  color: #444A52;
+}
+.cx-widget.cx-theme-hdtheme .cx-btn-default {
+  background: none;
+  border-color: #DAE1E8 !important;
+  color: #FDFDFD;
+  background-color: #555D66;
+}
+.cx-widget.cx-theme-hdtheme .cx-btn.cx-disabled {
+  background: #CCCCCC;
+}
+.cx-widget.cx-theme-hdtheme .cx-btn-primary {
+  color: #FDFDFD;
+  border-color: #DAE1E8 !important;
+  background: #a41e35;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #a41e35 0%, #a41e35 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #a41e35 0%, #a41e35 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #a41e35 0%, #a41e35 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@bg_color_4', endColorstr='@bg_color_5', GradientType=0);
+  /* IE6-9 */
+}
+.cx-widget.cx-theme-hdtheme .cx-ac-dropdown-menu {
+  background: #FDFDFD;
+  border-color: #DAE1E8 !important;
+}
+.cx-widget.cx-theme-hdtheme .cx-ac-suggestion:hover,
+.cx-widget.cx-theme-hdtheme .cx-ac-suggestion.cx-active {
+  background-color: #75A8FF;
+  color: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .iScrollIndicator {
+  background: #CCCCCC;
+}
+.cx-widget.cx-theme-hdtheme .cx-smokescreen {
+  background-color: #FDFDFD;
+  opacity: 0.7;
+}
+.cx-widget.cx-theme-hdtheme .cx-dialog-container .cx-dialog {
+  background-color: #FDFDFD;
+  border-color: #DAE1E8 !important;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-background {
+  background-color: #FDFDFD;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-border {
+  border: 1px solid #DAE1E8 !important;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-text {
+  color: #444A52;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-icon-interactive1 svg .cx-svg-icon-tone1 {
+  fill: #5081E1;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-icon-positive svg .cx-svg-icon-tone1 {
+  fill: #4AC764;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-icon-negative svg .cx-svg-icon-tone1 {
+  fill: #EA4F6B;
+}
+.cx-widget.cx-theme-hdtheme .cx-theme-icon-warning svg .cx-svg-icon-tone1 {
+  fill: #F8A740;
+}
+.cx-widget.cx-theme-hdtheme .cx-titlebar .cx-title {
+  color: #FFFFFF;
+  background-color: #a41e35;
+}
+.cx-widget.cx-theme-hdtheme .cx-titlebar  {
+  color: #FFFFFF;
+  background-color: #a41e35;
+}

@@ -185,19 +185,9 @@ function updateGroupTableFilter() {
     }, {filterText: filterText});
 }
 
-document.querySelectorAll('h1,h2,h3,h4,h5').forEach(function(elem) {
-    if(!elem.id) {
-        let new_id_source = elem.name || elem.innerText;
-        let new_id = new_id_source.trim().replaceAll(/\s{2}/gm,'').replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
-        elem.id = new_id;
-    }
-});
-
 jQuery(document).ready(function() {
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.34.0/tocbot.css">');
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/genesys.css">');
    // $('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">');
     if(jQuery('#divAttachments .js-attachments-body').data('attachmentsCount') == 0) {
         jQuery('#divAttachments').hide();
@@ -226,48 +216,4 @@ jQuery(document).ready(function() {
         });
     }
     
-    $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
-
-
-    if($("meta[property='og:type']").attr('content') == "article") {
-        $('#tool-sidebar').prepend(`
-            <div class='temple_toc-parent pull-right' name='toc'>
-                <div class="panel panel-default">
-                    <div class='temple_toc'></div>
-                </div>
-            </div>`);
-        targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
-        tocbot.init({
-            tocSelector: "div.temple_toc",
-            contentSelector: `div#${targetDiv}`,
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h2, h3, h4',
-            hasInnerContainers: true,
-            listClass: 'list-group',
-            listItemClass: 'list-group-item',
-            activeListItemClass: '',
-            activeLinkClass: 'list-link-active',
-            linkClass: 'list-link',
-            headingsOffset: 250,
-            scrollSmoothOffset: -250,
-            /*enableUrlHashUpdateOnScroll: true */
-        });
-        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
-        
-        
-        $(window).resize(function () {
-            if($(window).width() <= 975) {
-                expectedParent = `#${targetDiv}`;
-            } else {
-                expectedParent = '#tool-sidebar';
-            }
-            if (expectedParent != $('.temple_toc-parent').parent().attr('id')) {
-                $(expectedParent).prepend($('.temple_toc-parent'));
-            };
-        }).resize();
-        if(window.location.hash && window.location.hash != "#") {
-            document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
-        }
-    }
 });
-
