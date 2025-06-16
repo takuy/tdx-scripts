@@ -1,0 +1,23 @@
+
+#startNewConversation_text, .startNewButton {
+    display: none;
+}
+
+.Cx-MuiButtonBase-root {
+
+}
+
+.cx-messenger-6uai9c {
+    display: none;
+}
+
+.cx-messenger-13ya4ni {
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 0px;
+
+    & > button {
+    background: black;
+    }
+}
