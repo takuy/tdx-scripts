@@ -262,7 +262,6 @@ jQuery(document).ready(function() {
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
         
-        document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
         
         $(window).resize(function () {
             if($(window).width() <= 975) {
@@ -274,6 +273,7 @@ jQuery(document).ready(function() {
                 $(expectedParent).prepend($('.temple_toc-parent'));
             };
         }).resize();
+        document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
     }
 });
 
