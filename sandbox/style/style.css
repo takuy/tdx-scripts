@@ -68,3 +68,9 @@ a.DetailAction:hover, button.DetailAction:hover{
     float: right;
   }
 }
+
+@media only screen and (max-width : 991.9999999px){
+  div.row[name='homepage-grid'] {
+    padding-bottom: 10px;
+  }
+}
