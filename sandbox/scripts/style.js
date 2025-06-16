@@ -273,7 +273,9 @@ jQuery(document).ready(function() {
                 $(expectedParent).prepend($('.temple_toc-parent'));
             };
         }).resize();
-        document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
+        if(window.location.hash && window.location.hash != "#") {
+            document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
+        }
     }
 });
 
