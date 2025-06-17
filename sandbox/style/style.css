@@ -55,7 +55,7 @@ a.DetailAction:hover, button.DetailAction:hover{
   }
   
   #tool-sidebar {
-    height: 70vh;
+    height: 90vh;
     overflow: auto;
   }
 }
