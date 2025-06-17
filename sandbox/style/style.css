@@ -67,6 +67,11 @@ a.DetailAction:hover, button.DetailAction:hover{
   #navShim {
     display: none!important;
   }
+
+  #ctl00_ctl00_mainNav {
+    position: sticky;
+    top: 0px;
+  }
 }
 
 @media only screen and (min-width : 767.9999999px) and (max-width : 991.9999999px){
