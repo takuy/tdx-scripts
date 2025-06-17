@@ -37,7 +37,6 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
 }
 
 .temple_toc-parent {
-  max-height: 300px;
   width: 100%;
 }
 
@@ -52,24 +51,23 @@ a.DetailAction:hover, button.DetailAction:hover{
 @media only screen and (min-width : 768px) {
   #divMainContent + div.col-md-4 {
     position: sticky; 
-    top: 250px;
+    top: 10px;
   }
   
   #tool-sidebar {
-    height: 500px;
+    height: 70vh;
     overflow: auto;
   }
-
 }
 
 @media (min-width: 992px) {
-    #divMstrHeader {
-        position: relative!important;
-    }
-    #navShim {
-      display: none!important;
-    }
+  #divMstrHeader {
+      position: relative!important;
   }
+  #navShim {
+    display: none!important;
+  }
+}
 
 @media only screen and (min-width : 767.9999999px) and (max-width : 991.9999999px){
   .temple_toc-parent {
