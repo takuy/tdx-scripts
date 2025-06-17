@@ -272,7 +272,7 @@ jQuery(document).ready(function() {
         window.addEventListener("scroll", function() {
             var elementTarget = document.querySelector(".topLevelSearch");
             if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && ($(window).width() >= 975) ) {
-                $(elementTarget).insertAfter($('#td-navbar-collapse'));
+                $(elementTarget).append($('#td-navbar-collapse'));
             } else {
                 $('.master-header-right').prepend(elementTarget);
             }
