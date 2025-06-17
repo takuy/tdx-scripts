@@ -237,7 +237,21 @@ jQuery(document).ready(function() {
 */
     $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
 
+    if ($('header #divTabHeader').length ) {
+        $('header #divTabHeader').insertAfter($('header'));
+    }
+    $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
 
+
+    window.addEventListener("scroll", function() {
+        var elementTarget = document.querySelector(".topLevelSearch");
+        if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && ($(window).width() >= 975) ) {
+            $('#td-navbar-collapse').append(elementTarget);
+        } else {
+            $('.master-header-right').prepend(elementTarget);
+        }
+    });
+    
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#tool-sidebar').prepend(`
             <div class='temple_toc-parent pull-right' name='toc'>
@@ -262,21 +276,6 @@ jQuery(document).ready(function() {
             /*enableUrlHashUpdateOnScroll: true */
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
-        
-        if ($('header #divTabHeader').length ) {
-            $('header #divTabHeader').insertAfter($('header'));
-        }
-        $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
-
-
-        window.addEventListener("scroll", function() {
-            var elementTarget = document.querySelector(".topLevelSearch");
-            if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && ($(window).width() >= 975) ) {
-                $('#td-navbar-collapse').append(elementTarget);
-            } else {
-                $('.master-header-right').prepend(elementTarget);
-            }
-        });
 
         $(window).resize(function () {
             if($(window).width() <= 975) {
