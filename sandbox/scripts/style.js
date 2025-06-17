@@ -263,13 +263,15 @@ jQuery(document).ready(function() {
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
         
-        
-        $('#ctl00_ctl00_mainNav').insertAfter($('header'));
+        if ($('header #divTabHeader').length ) {
+            $('header #divTabHeader').insertAfter($('header'));
+        }
+        $('#divMstrHeader .navbar').insertAfter($('header'));
 
 
         window.addEventListener("scroll", function() {
             var elementTarget = document.querySelector(".topLevelSearch");
-            if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
+            if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && $(window).width() >= 975) {) {
                 $(elementTarget).insertAfter($('#td-navbar-collapse'));
             } else {
                 $('.master-header-right').prepend(elementTarget);
