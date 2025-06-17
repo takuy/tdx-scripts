@@ -242,16 +242,19 @@ jQuery(document).ready(function() {
     }
     $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
 
-
+/*
     window.addEventListener("scroll", function() {
         var elementTarget = document.querySelector(".topLevelSearch");
+        console.log(window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight));
+        console.log(window.scrollY,  (elementTarget.offsetTop + elementTarget.offsetHeight));
         if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && ($(window).width() >= 975) ) {
             $('#td-navbar-collapse').append(elementTarget);
         } else {
             $('.master-header-right').prepend(elementTarget);
         }
     });
-    
+*/
+
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#tool-sidebar').prepend(`
             <div class='temple_toc-parent pull-right' name='toc'>
