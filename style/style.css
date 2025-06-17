@@ -52,11 +52,11 @@ a.DetailAction:hover, button.DetailAction:hover{
 @media only screen and (min-width : 768px) {
   #divMainContent + div.col-md-4 {
     position: sticky; 
-    top: 250px;
+    top: 2100px;
   }
   
   #tool-sidebar {
-    height: 500px;
+    height: 70vh;
     overflow: auto;
   }
 

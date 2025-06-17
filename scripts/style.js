@@ -231,7 +231,7 @@ jQuery(document).ready(function() {
 
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#tool-sidebar').prepend(`
-            <div class='temple_toc-parent pull-right' name='toc'>
+            <div class='temple_toc-parent' name='toc'>
                 <div class="panel panel-default">
                     <div class='temple_toc'></div>
                 </div>
