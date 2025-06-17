@@ -68,12 +68,12 @@ a.DetailAction:hover, button.DetailAction:hover{
     display: none!important;
   }
 
-  #divMstrHeader .navbar {
+  #ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav {
     position: sticky;
     top: 0px;
   }
 
-  #divMstrHeader .navbar .topLevelSearch {
+  #ctl00_ctl00_mainNav .topLevelSearch, #ctl00_mainNav .topLevelSearch, #mainNav .topLevelSearch {
     float: right!important;
   }
 }
