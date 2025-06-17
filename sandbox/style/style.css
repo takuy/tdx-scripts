@@ -62,6 +62,15 @@ a.DetailAction:hover, button.DetailAction:hover{
 
 }
 
+@media (min-width: 992px) {
+    #divMstrHeader {
+        position: relative!important;
+    }
+    #navShim {
+      display: none!important;
+    }
+  }
+
 @media only screen and (min-width : 767.9999999px) and (max-width : 991.9999999px){
   .temple_toc-parent {
     width: 300px;
