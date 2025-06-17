@@ -266,7 +266,7 @@ jQuery(document).ready(function() {
         if ($('header #divTabHeader').length ) {
             $('header #divTabHeader').insertAfter($('header'));
         }
-        $('#divMstrHeader .navbar').insertAfter($('header'));
+        $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
 
 
         window.addEventListener("scroll", function() {
