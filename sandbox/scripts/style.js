@@ -264,6 +264,18 @@ jQuery(document).ready(function() {
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
         
         
+        $('#ctl00_ctl00_mainNav').insertAfter($('header'));
+
+
+        window.addEventListener("scroll", function() {
+            var elementTarget = document.querySelector(".topLevelSearch");
+            if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
+                $(elementTarget).insertAfter($('#td-navbar-collapse'));
+            } else {
+                $('.master-header-right').prepend(elementTarget);
+            }
+        });
+
         $(window).resize(function () {
             if($(window).width() <= 975) {
                 expectedParent = `#${targetDiv}`;

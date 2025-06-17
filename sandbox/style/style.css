@@ -51,7 +51,7 @@ a.DetailAction:hover, button.DetailAction:hover{
 @media only screen and (min-width : 768px) {
   #divMainContent + div.col-md-4 {
     position: sticky; 
-    top: 10px;
+    top: 60px;
   }
   
   #tool-sidebar {
@@ -71,6 +71,10 @@ a.DetailAction:hover, button.DetailAction:hover{
   #ctl00_ctl00_mainNav {
     position: sticky;
     top: 0px;
+  }
+
+  #ctl00_ctl00_mainNav .topLevelSearch{
+    float: right;
   }
 }
 
