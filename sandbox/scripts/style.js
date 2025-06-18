@@ -241,6 +241,50 @@ jQuery(document).ready(function() {
         }
     });
 
+    let counter = {};
+    let type2WordsMap = {
+        "warning": "Alert",
+        "info": "Maintenance",
+        "danger": "Outage"
+    };
+    let type2CounterMap = {
+        "Alert": "warning",
+        "Active": "danger",
+        "Advisory": "warning",
+        "Resolved": "resolved",
+        "Scheduled Maintenance": "info",
+        "Emergency Maintenance": "info",
+        "Unavailable": "danger",
+        "Phishing Alert": "warning",
+        "Intermittent": "danger"
+    }
+    $.ajax("https://systemstatus.temple.edu/system_status/feedJSON", {
+        dataType: 'json',
+        accepts: {
+            json:"application/rss+json"
+        },
+    }).done(function(response) {
+        for(item in response.entries) {
+            let type = response.entries[item].summarystatus.slice(16);
+            let counterType = type2CounterMap[type];
+            if (type != "Resolved") {
+                if (counter[counterType] === undefined) {
+                    counter[counterType] = 1;
+                } else {
+                    counter[counterType]++;
+                }
+            }
+        }
+        let output = " ";
+        let tooltipOutput = "";
+        for(type in counter) {
+            output += `<span class="label label-${type}">${counter[type]}</span>`;
+            tooltipOutput += ( tooltipOutput.len > 0 ? ', ' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
+        }
+        $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "data-bottom", "title": tooltipOutput}).append(output).tooltip()
+    });
+
+
 
 
 /*
@@ -279,7 +323,7 @@ jQuery(document).ready(function() {
                     <div class='temple_toc'></div>
                 </div>
             </div>`);
-        targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
+        let targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
         tocbot.init({
             tocSelector: "div.temple_toc",
             contentSelector: `div#${targetDiv}`,
@@ -297,6 +341,7 @@ jQuery(document).ready(function() {
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
 
+        let expectedParent = "";
         $(window).resize(function () {
             if($(window).width() <= 975) {
                 expectedParent = `#${targetDiv}`;
