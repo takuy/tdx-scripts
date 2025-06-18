@@ -281,7 +281,7 @@ jQuery(document).ready(function() {
             output += `<span class="label label-${type}">${counter[type]}</span>`;
             tooltipOutput += ( tooltipOutput.len > 0 ? ', ' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
         }
-        $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "data-bottom", "title": tooltipOutput}).append(output).tooltip()
+        $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput}).append(output).tooltip()
     });
 
 
