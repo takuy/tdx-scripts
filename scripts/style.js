@@ -226,7 +226,7 @@ jQuery(document).ready(function() {
         });
     }
     
-    $.ajax("https://tualert.com/status.json", {
+    $.ajax("https://www.tualert.com/status.json", {
         dataType: 'json'
     }).done(function(response) {
         if(typeof response == "object") {
