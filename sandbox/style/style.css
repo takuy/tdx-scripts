@@ -113,3 +113,8 @@ a.DetailAction:hover, button.DetailAction:hover{
 	 text-decoration: underline;
 }
  
+
+.rss-container {
+  float: none; 
+  clear: both;
+}
