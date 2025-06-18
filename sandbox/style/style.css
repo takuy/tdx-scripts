@@ -122,4 +122,5 @@ a.DetailAction:hover, button.DetailAction:hover {
   float: none; 
   clear: both;
   padding-bottom: 15px!important;
+  border-bottom: 3px solid #dcdcdc;
 }
