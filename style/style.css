@@ -73,3 +73,8 @@ a.DetailAction:hover, button.DetailAction:hover{
     padding-bottom: 10px;
   }
 }
+
+.rss-container {
+  float: none; 
+  clear: both;
+}
