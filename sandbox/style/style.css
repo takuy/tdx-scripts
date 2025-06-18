@@ -121,4 +121,5 @@ a.DetailAction:hover, button.DetailAction:hover {
 .rss-container {
   float: none; 
   clear: both;
+  padding-bottom: 15px;
 }

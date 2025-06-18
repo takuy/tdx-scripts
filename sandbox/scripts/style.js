@@ -275,11 +275,11 @@ jQuery(document).ready(function() {
                 }
             }
         }
-        let output = " ";
+        let output = "";
         let tooltipOutput = "";
         for(type in counter) {
-            output += `<span class="label label-${type}">${counter[type]}</span>`;
-            tooltipOutput += ( tooltipOutput.len > 0 ? ', ' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
+            output += ` <span class="label label-${type}">${counter[type]}</span>`;
+            tooltipOutput += ( tooltipOutput.length > 0 ? ', ' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
         }
         $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput}).append(output).tooltip()
     });
