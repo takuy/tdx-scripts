@@ -229,7 +229,7 @@ jQuery(document).ready(function() {
     $.ajax("https://www.tualert.com/status.json", {
         dataType: 'json'
     }).done(function(response) {
-        if(!Array.isArray(response)) {
+        if(response && !Array.isArray(response) ) {
             let tualert = `
                 <div class="tu-alert-wrapper">
                     <div class="container">
