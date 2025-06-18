@@ -229,7 +229,7 @@ jQuery(document).ready(function() {
     $.ajax("https://np-tualert.temple.edu/status.json", {
         dataType: 'json'
     }).done(function(response) {
-        if(typeof response == "object") {
+        if(!Array.isArray(response)) {
             let tualert = `
                 <div class="tu-alert-wrapper">
                     <div class="container">
