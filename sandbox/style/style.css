@@ -40,16 +40,18 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   color: white;
 }
 
+a.DetailAction:hover, button.DetailAction:hover {
+  color: white;
+}
+
+/* Hack the Navbar and TOC */
+
 .temple_toc-parent {
   width: 100%;
 }
 
 .temple_toc .list-group {
   margin-bottom: 0;
-}
-
-a.DetailAction:hover, button.DetailAction:hover {
-  color: white;
 }
 
 @media only screen and (min-width : 768px) {
@@ -89,7 +91,7 @@ a.DetailAction:hover, button.DetailAction:hover {
     float: right;
   }
 }
-
+/* Padding for grid items */
 @media only screen and (max-width : 991.9999999px){
   div.row[name='homepage-grid'] div {
     padding-bottom: 10px;
@@ -117,6 +119,7 @@ a.DetailAction:hover, button.DetailAction:hover {
 	 text-decoration: underline;
 }
  
+/* Dumb RSS Feed handling with floats */
 
 .rss-container {
   float: none; 
@@ -128,4 +131,8 @@ a.DetailAction:hover, button.DetailAction:hover {
 .rss-content {
   float: none; 
   clear: both;
+}
+
+.rss-content div ~ div {
+    float: none !important;
 }
