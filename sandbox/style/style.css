@@ -48,7 +48,7 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   margin-bottom: 0;
 }
 
-a.DetailAction:hover, button.DetailAction:hover{
+a.DetailAction:hover, button.DetailAction:hover {
   color: white;
 }
 

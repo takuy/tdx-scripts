@@ -302,7 +302,9 @@ jQuery(document).ready(function() {
         $('header #divTabHeader').insertAfter($('header'));
     }
     $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
-
+    $('#td-navbar-collapse').on('focusin', function(e) {
+        e.stopPropagation(); 
+    });
 /*
     window.addEventListener("scroll", function() {
         var elementTarget = document.querySelector(".topLevelSearch");
@@ -323,6 +325,7 @@ jQuery(document).ready(function() {
                     <div class='temple_toc'></div>
                 </div>
             </div>`);
+            
         let targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
         tocbot.init({
             tocSelector: "div.temple_toc",
@@ -352,6 +355,7 @@ jQuery(document).ready(function() {
                 $(expectedParent).prepend($('.temple_toc-parent'));
             };
         }).resize();
+
         if(window.location.hash && window.location.hash != "#") {
             document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
         }
