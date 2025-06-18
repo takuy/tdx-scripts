@@ -226,17 +226,107 @@ jQuery(document).ready(function() {
         });
     }
     
+    $.ajax("https://tualert.com/status.json", {
+        dataType: 'json'
+    }).done(function(response) {
+        if(typeof response == "object") {
+            let tualert = `
+                <div class="tu-alert-wrapper">
+                    <div class="container">
+                        <div class="tu-alert__title">${response.title}</div>
+                        <div class="tu-alert__readmore "><a target="_blank" href="${response.readmore}">Read More</a></div>
+                    </div>
+                </div>`;
+            $('body').prepend(tualert);
+        }
+    });
+
+    let counter = {};
+    let type2WordsMap = {
+        "warning": "Alert",
+        "info": "Maintenance",
+        "danger": "Outage"
+    };
+    let type2CounterMap = {
+        "Alert": "warning",
+        "Active": "danger",
+        "Advisory": "warning",
+        "Resolved": "resolved",
+        "Scheduled Maintenance": "info",
+        "Emergency Maintenance": "info",
+        "Unavailable": "danger",
+        "Phishing Alert": "warning",
+        "Intermittent": "danger"
+    }
+    $.ajax("https://systemstatus.temple.edu/system_status/feedJSON", {
+        dataType: 'json',
+        accepts: {
+            json:"application/rss+json"
+        },
+    }).done(function(response) {
+        for(item in response.entries) {
+            let type = response.entries[item].summarystatus.slice(16);
+            let counterType = type2CounterMap[type];
+            if (type != "Resolved") {
+                if (counter[counterType] === undefined) {
+                    counter[counterType] = 1;
+                } else {
+                    counter[counterType]++;
+                }
+            }
+        }
+        let output = "";
+        let tooltipOutput = "";
+        for(type in counter) {
+            output += ` <span class="label label-${type}">${counter[type]}</span>`;
+            tooltipOutput += ( tooltipOutput.length > 0 ? ', ' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
+        }
+        $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput}).append(output).tooltip()
+    });
+
+
+
+
+/*
+    $('h1,h2,h3,h4,h5').each(function() {
+        if(!$(this).attr('id')) {
+            let new_id_source = $(this).attr('name') || $(this).text();
+            let new_id = new_id_source.trim().replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
+            $(this).attr('id', new_id)
+        }
+    });
+*/
     $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
 
+    if ($('header #divTabHeader').length ) {
+        $('header #divTabHeader').insertAfter($('header'));
+    }
+    $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
+    $('#td-navbar-collapse').on('focusin', function(e) {
+        e.stopPropagation(); 
+    });
+/*
+    window.addEventListener("scroll", function() {
+        var elementTarget = document.querySelector(".topLevelSearch");
+        console.log(window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight));
+        console.log(window.scrollY,  (elementTarget.offsetTop + elementTarget.offsetHeight));
+        if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && ($(window).width() >= 975) ) {
+            $('#td-navbar-collapse').append(elementTarget);
+        } else {
+            $('.master-header-right').prepend(elementTarget);
+        }
+    });
+*/
 
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#tool-sidebar').prepend(`
-            <div class='temple_toc-parent' name='toc'>
+            <div class='temple_toc-parent pull-right' name='toc'>
                 <div class="panel panel-default">
                     <div class='temple_toc'></div>
                 </div>
             </div>`);
-        targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
+            
+        let targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
         tocbot.init({
             tocSelector: "div.temple_toc",
             contentSelector: `div#${targetDiv}`,
@@ -253,8 +343,8 @@ jQuery(document).ready(function() {
             /*enableUrlHashUpdateOnScroll: true */
         });
         $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
-        
-        
+
+        let expectedParent = "";
         $(window).resize(function () {
             if($(window).width() <= 975) {
                 expectedParent = `#${targetDiv}`;
@@ -265,6 +355,7 @@ jQuery(document).ready(function() {
                 $(expectedParent).prepend($('.temple_toc-parent'));
             };
         }).resize();
+
         if(window.location.hash && window.location.hash != "#") {
             document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
         }

@@ -40,6 +40,12 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   color: white;
 }
 
+a.DetailAction:hover, button.DetailAction:hover {
+  color: white;
+}
+
+/* Hack the Navbar and TOC */
+
 .temple_toc-parent {
   width: 100%;
 }
@@ -48,21 +54,35 @@ div[name='software_list'] .tabulator-row.tabulator-selectable:hover {
   margin-bottom: 0;
 }
 
-a.DetailAction:hover, button.DetailAction:hover {
-  color: white;
-}
-
 @media only screen and (min-width : 768px) {
   #divMainContent + div.col-md-4 {
     position: sticky; 
-    top: 210px;
+    top: 60px;
   }
   
   #tool-sidebar {
-    height: 70vh;
+    max-height: 90vh;
     overflow: auto;
   }
+}
 
+@media (min-width: 992px) {
+  #divMstrHeader {
+      position: relative!important;
+  }
+  #navShim {
+    display: none!important;
+  }
+
+  #ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav {
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+  }
+
+  #ctl00_ctl00_mainNav .topLevelSearch, #ctl00_mainNav .topLevelSearch, #mainNav .topLevelSearch {
+    float: right!important;
+  }
 }
 
 @media only screen and (min-width : 767.9999999px) and (max-width : 991.9999999px){
@@ -70,15 +90,49 @@ a.DetailAction:hover, button.DetailAction:hover {
     width: 300px;
     float: right;
   }
-} 
-
+}
+/* Padding for grid items */
 @media only screen and (max-width : 991.9999999px){
   div.row[name='homepage-grid'] div {
     padding-bottom: 10px;
   }
 }
 
+/* TU Alert Styling */
+
+.tu-alert-wrapper {
+	 margin: 0;
+	 padding: 10px;
+	 background: #fcb813;
+	 display: flex;
+	 flex-direction: column;
+	 gap: 1rem;
+	 width: 100%;
+}
+.tu-alert__title {
+	 text-transform: uppercase;
+	 font-weight: 700; padding-bottom: 5px;
+}
+.tu-alert__readmore {
+	 color: #a41e35;
+	 font-weight: 700;
+	 text-decoration: underline;
+}
+ 
+/* Dumb RSS Feed handling with floats */
+
 .rss-container {
   float: none; 
   clear: both;
+  padding-bottom: 15px!important;
+  border-bottom: 3px solid #dcdcdc!important;
+}
+
+.rss-content {
+  float: none; 
+  clear: both;
+}
+
+.rss-content > div ~ div {
+    float: none !important;
 }
