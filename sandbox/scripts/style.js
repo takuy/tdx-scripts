@@ -226,6 +226,23 @@ jQuery(document).ready(function() {
         });
     }
     
+    $.ajax("https://np-tualert.temple.edu/status.json", {
+        dataType: 'json'
+    }).done(function(response) {
+        if(typeof response == "object") {
+            let tualert = `
+                <div class="tu-alert-wrapper">
+                    <div class="container">
+                        <div class="tu-alert__title">${response.title}</div>
+                        <div class="tu-alert__readmore "><a target="_blank" href="${response.readmore}">Read More</a></div>
+                    </div>
+                </div>`;
+            $('body').prepend(tualert);
+        }
+    });
+
+
+
 /*
     $('h1,h2,h3,h4,h5').each(function() {
         if(!$(this).attr('id')) {
