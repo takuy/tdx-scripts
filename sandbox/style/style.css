@@ -133,6 +133,6 @@ a.DetailAction:hover, button.DetailAction:hover {
   clear: both;
 }
 
-.rss-content div ~ div {
+.rss-content > div ~ div {
     float: none !important;
 }
