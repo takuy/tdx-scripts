@@ -162,8 +162,6 @@ function tabulatorGroupTable() {
     });   
 
     $('#divMainContent').addClass('col-12').removeClass("col-md-8");
-
-    document.querySelector('input[name="software-search"]').addEventListener("keyup", updateSoftwareFilter);
 }
 
 function updateGroupTableFilter() {
