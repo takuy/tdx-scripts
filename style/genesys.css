@@ -24,15 +24,16 @@
 @media only screen and (max-width : 767.9999999px){
   #offlinechatrequest {
     position: fixed!important;
-    bottom: 0;
-    right: 0;
+    bottom: 0!important;;
+    right: 0!important;;
+    width: 100%;
   }
 }
 
 #offlinechatrequest {
   position: fixed!important;
-  bottom: 0;
-  right: 20px;
+  bottom: 0!important;;
+  right: 20px!important;;
 }
 #offlineChatBody {
   padding-bottom: 30px;
