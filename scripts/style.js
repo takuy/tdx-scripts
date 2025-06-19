@@ -302,6 +302,9 @@ jQuery(document).ready(function() {
         $('header #divTabHeader').insertAfter($('header'));
     }
     $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
+    $('#collapseMe').prepend(`<li id="liveChatMobile" class="themed tdbar-button-anchored hidden-sm hidden-md hidden-lg">
+                <a onclick="showPopup()" title="Live Chat" href="#">Live Chat</a>
+              </li>`);
     $('#td-navbar-collapse').on('focusin', function(e) {
         e.stopPropagation(); 
     });
