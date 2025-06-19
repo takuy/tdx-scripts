@@ -98,6 +98,13 @@ a.DetailAction:hover, button.DetailAction:hover {
   }
 }
 
+
+@media only screen and (max-width : 767.9999999px){
+  .floaty-chat-invert {
+    display: none;
+  }
+}
+
 /* TU Alert Styling */
 
 .tu-alert-wrapper {
