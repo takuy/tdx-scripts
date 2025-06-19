@@ -202,6 +202,7 @@ jQuery(document).ready(function() {
     }
     
     jQuery('body').append('<div class="floaty-chat"><a onclick="showPopup()" title="Live Chat with the TSC Help Desk" href="#"></a></div>');
+    jQuery('body').append('<div class="floaty-chat-invert"><a onclick="showPopup()" title="Live Chat with the TSC Help Desk" href="#"></a></div>');
     
     if(jQuery('table[name="software_list"]').length) {
         tabulatorSoftwareTable();
