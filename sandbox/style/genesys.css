@@ -22,7 +22,7 @@
     }
 }
 #offlinechatrequest {
-  position: absolute;
+  position: fixed!important;
   bottom: 0;
   right: 20px;
 }
