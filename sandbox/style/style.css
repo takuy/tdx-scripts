@@ -163,5 +163,5 @@ a.DetailAction:hover, button.DetailAction:hover {
   height: 100px;
   position: fixed;
   bottom: 25px;
-  left: 25px;
+  right: 150px;
 }
