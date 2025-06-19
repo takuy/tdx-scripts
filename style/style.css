@@ -157,4 +157,5 @@ a.DetailAction:hover, button.DetailAction:hover {
   position: fixed;
   bottom: 25px;
   right: 25px;
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 1);
 }
