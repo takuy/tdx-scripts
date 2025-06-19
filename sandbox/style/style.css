@@ -136,3 +136,15 @@ a.DetailAction:hover, button.DetailAction:hover {
 .rss-content > div ~ div {
     float: none !important;
 }
+
+.floaty-chat {
+  background-image: url('https://help.temple.edu/TDPortal/Images/Viewer?fileName=02683f92-078a-48db-a74d-b2d7ee37b2f2.png&beidInt=78');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}

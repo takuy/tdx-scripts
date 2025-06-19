@@ -201,6 +201,8 @@ jQuery(document).ready(function() {
         jQuery('#divAttachments').hide();
     }
     
+    jQuery('body').append('<div class="floaty-chat"></div>');
+    
     if(jQuery('table[name="software_list"]').length) {
         tabulatorSoftwareTable();
     }
