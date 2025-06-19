@@ -138,13 +138,20 @@ a.DetailAction:hover, button.DetailAction:hover {
 }
 
 .floaty-chat {
-  background-image: url('https://help.temple.edu/TDPortal/Images/Viewer?fileName=8ffe5241-6e89-4a59-be2e-31651b903696.png&beidInt=78');
+  background-image: url('https://help.temple.edu/TDPortal/Images/Viewer?fileName=24b09702-761e-4cfb-b8c6-726a093f90d1.png&beidInt=78');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  width: 200px;
-  height: 200px;
+  mix-blend-mode: difference;
+  border-radius: 100px;
+  width: 150px;
+  height: 150px;
   position: fixed;
   bottom: 10px;
   right: 10px;
+}
+
+.floaty-chat a {
+  height: 100%; 
+  width: 100%;
 }
