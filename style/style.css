@@ -149,8 +149,8 @@ a.DetailAction:hover, button.DetailAction:hover {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  filter: invert(1);
-  mix-blend-mode: difference;
+  /* filter: invert(1); */
+  /*mix-blend-mode: difference; */
   border-radius: 100px;
   width: 100px;
   height: 100px;
