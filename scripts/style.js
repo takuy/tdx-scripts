@@ -200,7 +200,9 @@ jQuery(document).ready(function() {
     if(jQuery('#divAttachments .js-attachments-body').data('attachmentsCount') == 0) {
         jQuery('#divAttachments').hide();
     }
-    
+
+    jQuery('body').append('<div class="floaty-chat-invert"><a onclick="showPopup()" title="Live Chat with the TSC Help Desk" href="#"></a></div>');
+
     if(jQuery('table[name="software_list"]').length) {
         tabulatorSoftwareTable();
     }
@@ -359,4 +361,3 @@ jQuery(document).ready(function() {
         }
     }
 });
-

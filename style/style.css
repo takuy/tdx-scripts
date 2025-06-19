@@ -136,3 +136,18 @@ a.DetailAction:hover, button.DetailAction:hover {
 .rss-content > div ~ div {
     float: none !important;
 }
+
+.floaty-chat-invert a {
+  background-image: url(https://help.temple.edu/TDPortal/Images/Viewer?fileName=24b09702-761e-4cfb-b8c6-726a093f90d1.png&beidInt=78);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: invert(1);
+  mix-blend-mode: difference;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
