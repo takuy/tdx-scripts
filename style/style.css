@@ -144,7 +144,7 @@ a.DetailAction:hover, button.DetailAction:hover {
     float: none !important;
 }
 
-.floaty-chat-invert a {
+.floaty-chat-invert {
   background-image: url(https://help.temple.edu/TDPortal/Images/Viewer?fileName=24b09702-761e-4cfb-b8c6-726a093f90d1.png&beidInt=78);
   background-repeat: no-repeat;
   background-position: center;
