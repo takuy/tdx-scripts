@@ -201,7 +201,7 @@ jQuery(document).ready(function() {
         jQuery('#divAttachments').hide();
     }
 
-    jQuery('body').append('<div class="floaty-chat-invert"><a onclick="showPopup()" title="Live Chat with the TSC Help Desk" href="#"></a></div>');
+    jQuery('body').append('<div class="live-chat floaty-chat-invert"><a onclick="showPopup()" title="Live Chat with the TSC Help Desk" href="#"></a></div>');
 
     if(jQuery('table[name="software_list"]').length) {
         tabulatorSoftwareTable();
@@ -302,10 +302,13 @@ jQuery(document).ready(function() {
         $('header #divTabHeader').insertAfter($('header'));
     }
     $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
-    $('#collapseMe').prepend(`<li id="liveChatMobile" class="themed tdbar-button-anchored hidden-sm hidden-md hidden-lg">
+    $('#collapseMe').prepend(`<li id="liveChatMobile" class="live-chat themed tdbar-button-anchored hidden-sm hidden-md hidden-lg">
                 <a onclick="showPopup()" title="Live Chat" href="#">Live Chat</a>
               </li>`);
     $('#td-navbar-collapse').on('focusin', function(e) {
+        e.stopPropagation(); 
+    });
+    $('.live-chat').on('click', function(e) {
         e.stopPropagation(); 
     });
 /*
