@@ -364,7 +364,10 @@ jQuery(document).ready(function() {
         }).resize();
 
         if(window.location.hash && window.location.hash != "#") {
-            document.querySelector(window.location.hash).scrollIntoView({behavior: 'instant', block: 'center'})
+            let targetID = document.querySelector(window.location.hash);
+            if (targetID) {
+                targetID.scrollIntoView({behavior: 'instant', block: 'center'})
+            }
         }
     }
 });
