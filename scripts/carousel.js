@@ -5,6 +5,6 @@ jQuery(document).ready(function() {
       var parent_carousel = jQuery(event.target).attr("class").replace("carousel ", "")
       jQuery(".slide-pages .btn").removeClass("active");
       jQuery(".slide-pages .btn[data-slide-to='" + slide_id + "'][data-target='." + parent_carousel + "']").addClass("active");
-      console.log(slide_id, parent_carousel);
+      //console.log(slide_id, parent_carousel);
   });
 });
