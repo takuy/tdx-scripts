@@ -345,7 +345,7 @@ jQuery(document).ready(function() {
             scrollSmoothOffset: -250,
             /*enableUrlHashUpdateOnScroll: true */
         });
-        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading data-target=".temple_toc" data-toggle="collapse">Table of Contents
+        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading" data-target=".temple_toc" data-toggle="collapse">Table of Contents
         <label class="pull-right btn fa-solid fa-up-right-and-down-left-from-center" type="button"></label></div>`);
 
         let expectedParent = "";
