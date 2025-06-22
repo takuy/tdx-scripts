@@ -323,9 +323,9 @@ jQuery(document).ready(function() {
 
     if($("meta[property='og:type']").attr('content') == "article") {
         $('#tool-sidebar').prepend(`
-            <div class='temple_toc-parent pull-right' name='toc'>
+            <div class='temple_toc-parent' name='toc'>
                 <div class="panel panel-default">
-                    <div class='temple_toc'></div>
+                    <div class='temple_toc collapse in'></div>
                 </div>
             </div>`);
             
@@ -345,7 +345,8 @@ jQuery(document).ready(function() {
             scrollSmoothOffset: -250,
             /*enableUrlHashUpdateOnScroll: true */
         });
-        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading">Table of Contents</div>`);
+        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading data-target=".temple_toc" data-toggle="collapse">Table of Contents
+        <label class="pull-right btn fa-solid fa-up-right-and-down-left-from-center" type="button"></label></div>`);
 
         let expectedParent = "";
         $(window).resize(function () {
