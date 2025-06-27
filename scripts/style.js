@@ -276,12 +276,13 @@ jQuery(document).ready(function() {
             }
         }
         let output = "";
-        let tooltipOutput = "";
+        let tooltipOutput = "<span style='text-align: right;'>";
         for(type in counter) {
             output += ` <span class="label label-${type}">${counter[type]}</span>`;
-            tooltipOutput += ( tooltipOutput.length > 0 ? ', ' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
+            tooltipOutput += ( tooltipOutput.length > 0 ? '<br>' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
         }
-        $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput}).append(output).tooltip()
+        tooltipOut += "</span>";
+        $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput, "data-html": "true"}).append(output).tooltip()
     });
 
 
