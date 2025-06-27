@@ -160,3 +160,7 @@ a.DetailAction:hover, button.DetailAction:hover {
   box-shadow: 1px 1px 5px rgba(255, 255, 255, 1);
   cursor: pointer;
 }
+
+#ctl00_ctl00_cpContent_cpContent_divServiceOfferings {
+  display: none;
+}
