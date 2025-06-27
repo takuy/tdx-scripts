@@ -276,10 +276,10 @@ jQuery(document).ready(function() {
             }
         }
         let output = "";
-        let tooltipOutput = "<span style='text-align: right;'>";
+        let tooltipOutput = "";
         for(type in counter) {
             output += ` <span class="label label-${type}">${counter[type]}</span>`;
-            tooltipOutput += ( tooltipOutput.length > 0 ? '<br>' : '' ) + `${type2WordsMap[type]}s: ${counter[type]}`;
+            tooltipOutput += ( tooltipOutput.length > 0 ? '<br>' : "<span style='text-align: right;'>" ) + `${type2WordsMap[type]}s: ${counter[type]}`;
         }
         tooltipOutput += "</span>";
         $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput, "data-html": "true"}).append(output).tooltip()
