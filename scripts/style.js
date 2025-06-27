@@ -183,11 +183,11 @@ function updateGroupTableFilter() {
     }, {filterText: filterText});
 }
 
-document.querySelectorAll('h1,h2,h3,h4,h5').forEach(function(elem) {
-    if(!elem.id) {
-        let new_id_source = elem.name || elem.innerText;
+$('h2, h3, h4', "#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").each(function() {
+    if(!this.id) {
+        let new_id_source = this.name || this.innerText;
         let new_id = new_id_source.trim().replaceAll(/\s{2}/gm,'').replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
-        elem.id = new_id;
+        this.id = new_id;
     }
 });
 
@@ -324,14 +324,14 @@ jQuery(document).ready(function() {
     });
 */
 
-    if($("meta[property='og:type']").attr('content') == "article") {
+    if($("meta[property='og:type']").attr('content') == "article" && $('h2, h3, h4', "#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").length > 1) {
         $('#tool-sidebar').prepend(`
             <div class='temple_toc-parent' name='toc'>
                 <div class="panel panel-default">
                     <div class='temple_toc collapse in'></div>
                 </div>
             </div>`);
-            
+        
         let targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
         tocbot.init({
             tocSelector: "div.temple_toc",
