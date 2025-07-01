@@ -191,41 +191,7 @@ $('h2, h3, h4', "#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpConten
     }
 });
 
-jQuery(document).ready(function() {
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.34.0/tocbot.css">');
-    $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/genesys.css">');
-   // $('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">');
-    if(jQuery('#divAttachments .js-attachments-body').data('attachmentsCount') == 0) {
-        jQuery('#divAttachments').hide();
-    }
-
-    jQuery('body').append('<div class="live-chat floaty-chat-invert" onclick="showPopup()"></div>');
-
-    if(jQuery('table[name="software_list"]').length) {
-        tabulatorSoftwareTable();
-    }
-
-    if(jQuery('table[name="group-table"]').length) {
-        tabulatorGroupTable();
-    }
-    
-    if(jQuery('table.simple-tabulator').length) {
-        var toTabulatorify = jQuery('table.simple-tabulator');
-        toTabulatorify.each(function() {
-            if ($(toTabulatorify).hasClass("tbl-full-width")) {
-                $('#divMainContent').addClass('col-12').removeClass("col-md-8");
-            } 
-            if ($(toTabulatorify).hasClass("hide-sidebar")) {
-                $('#divMainContent + div.col-md-4').hide();
-            }
-            new Tabulator(this, {
-                layout:"fitData"
-            });
-        });
-    }
-    
+function buildTUAlert() {
     $.ajax("https://www.tualert.com/status.json", {
         dataType: 'json'
     }).done(function(response) {
@@ -240,7 +206,9 @@ jQuery(document).ready(function() {
             $('body').prepend(tualert);
         }
     });
+}
 
+function buildSystemStatus() {
     let counter = {};
     let type2WordsMap = {
         "warning": "Alert",
@@ -284,91 +252,119 @@ jQuery(document).ready(function() {
         tooltipOutput += "</span>";
         $("ul li a:contains('System Status')").attr({"data-toggle": "tooltip", "data-placement": "bottom", "title": tooltipOutput, "data-html": "true"}).append(output).tooltip()
     });
+}
 
-
-
-
-/*
-    $('h1,h2,h3,h4,h5').each(function() {
-        if(!$(this).attr('id')) {
-            let new_id_source = $(this).attr('name') || $(this).text();
-            let new_id = new_id_source.trim().replaceAll(/[^A-Za-z0-9_-\w]/gm,'_').replaceAll(/^_+|_+$/gm,'').toLowerCase();
-            $(this).attr('id', new_id)
-        }
-    });
-*/
-    $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
-
-    if ($('header #divTabHeader').length ) {
-        $('header #divTabHeader').insertAfter($('header'));
-    }
-    $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
+function buildLiveChatElements() {
+    jQuery('body').append('<div class="live-chat floaty-chat-invert" onclick="showPopup()"></div>');
     $('#collapseMe').prepend(`<li id="liveChatMobile" class="live-chat themed tdbar-button-anchored hidden-sm hidden-md hidden-lg">
                 <a onclick="showPopup()" title="Live Chat" href="#">Live Chat</a>
               </li>`);
-    $('#td-navbar-collapse').on('focusin', function(e) {
-        e.stopPropagation(); 
-    });
     $('.live-chat').on('click', function(e) {
         e.stopPropagation(); 
     });
-/*
-    window.addEventListener("scroll", function() {
-        var elementTarget = document.querySelector(".topLevelSearch");
-        console.log(window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight));
-        console.log(window.scrollY,  (elementTarget.offsetTop + elementTarget.offsetHeight));
-        if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight) && ($(window).width() >= 975) ) {
-            $('#td-navbar-collapse').append(elementTarget);
-        } else {
-            $('.master-header-right').prepend(elementTarget);
-        }
-    });
-*/
+}
 
-    if($("meta[property='og:type']").attr('content') == "article" && $('h2, h3, h4', "#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").length > 1) {
-        $('#tool-sidebar').prepend(`
-            <div class='temple_toc-parent' name='toc'>
-                <div class="panel panel-default">
-                    <div class='temple_toc collapse in'></div>
-                </div>
-            </div>`);
+function moveHeaderAndSidebar() {
+    $("#divMainContent + div.col-md-4").wrapInner("<div id='tool-sidebar'>")
+
+    if ($('header #divTabHeader').length) {
+        $('header #divTabHeader').insertAfter($('header'));
+    }
         
-        let targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
-        tocbot.init({
-            tocSelector: "div.temple_toc",
-            contentSelector: `div#${targetDiv}`,
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h2, h3, h4',
-            hasInnerContainers: true,
-            listClass: 'list-group',
-            listItemClass: 'list-group-item',
-            activeListItemClass: '',
-            activeLinkClass: 'list-link-active',
-            linkClass: 'list-link',
-            headingsOffset: 250,
-            scrollSmoothOffset: -250,
-            /*enableUrlHashUpdateOnScroll: true */
-        });
-        $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading" data-target=".temple_toc" data-toggle="collapse">Table of Contents
-        <label class="pull-right btn fa-solid fa-up-right-and-down-left-from-center" type="button"></label></div>`);
+    $('#ctl00_ctl00_mainNav, #ctl00_mainNav, #mainNav').insertAfter($('header'));
 
-        let expectedParent = "";
-        $(window).resize(function () {
-            if($(window).width() <= 975) {
-                expectedParent = `#${targetDiv}`;
-            } else {
-                expectedParent = '#tool-sidebar';
-            }
-            if (expectedParent != $('.temple_toc-parent').parent().attr('id')) {
-                $(expectedParent).prepend($('.temple_toc-parent'));
-            };
-        }).resize();
+    $('#td-navbar-collapse').on('focusin', function(e) {
+        e.stopPropagation(); 
+    });
+}
 
-        if(window.location.hash && window.location.hash != "#") {
-            let targetID = document.querySelector(window.location.hash);
-            if (targetID) {
-                targetID.scrollIntoView({behavior: 'instant', block: 'center'})
-            }
+function buildTableOfContents() {
+    $('#tool-sidebar').prepend(`
+    <div class='temple_toc-parent' name='toc'>
+        <div class="panel panel-default">
+            <div class='temple_toc collapse in'></div>
+        </div>
+    </div>`);
+    
+    let targetDiv = $("#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").first().attr('id');
+    tocbot.init({
+        tocSelector: "div.temple_toc",
+        contentSelector: `div#${targetDiv}`,
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h2, h3, h4',
+        hasInnerContainers: true,
+        listClass: 'list-group',
+        listItemClass: 'list-group-item',
+        activeListItemClass: '',
+        activeLinkClass: 'list-link-active',
+        linkClass: 'list-link',
+        headingsOffset: 250,
+        scrollSmoothOffset: -250,
+        /*enableUrlHashUpdateOnScroll: true */
+    });
+    $('.temple_toc-parent div.panel').prepend(`<div class="panel-heading" data-target=".temple_toc" data-toggle="collapse">Table of Contents
+    <label class="pull-right btn fa-solid fa-up-right-and-down-left-from-center" type="button"></label></div>`);
+
+    let expectedParent = "";
+    $(window).resize(function () {
+        if($(window).width() <= 975) {
+            expectedParent = `#${targetDiv}`;
+        } else {
+            expectedParent = '#tool-sidebar';
         }
+        if (expectedParent != $('.temple_toc-parent').parent().attr('id')) {
+            $(expectedParent).prepend($('.temple_toc-parent'));
+        };
+    }).resize();
+
+    if(window.location.hash && window.location.hash != "#") {
+        let targetID = document.querySelector(window.location.hash);
+        if (targetID) {
+            targetID.scrollIntoView({behavior: 'instant', block: 'center'})
+        }
+    }
+}
+
+jQuery(document).ready(function() {
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.34.0/tocbot.css">');
+    $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/genesys.css">');
+   // $('head').append('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">');
+    if(jQuery('#divAttachments .js-attachments-body').data('attachmentsCount') == 0) {
+        jQuery('#divAttachments').hide();
+    }
+    if(jQuery('table[name="software_list"]').length) {
+        tabulatorSoftwareTable();
+    }
+
+    if(jQuery('table[name="group-table"]').length) {
+        tabulatorGroupTable();
+    }
+    
+    if(jQuery('table.simple-tabulator').length) {
+        var toTabulatorify = jQuery('table.simple-tabulator');
+        toTabulatorify.each(function() {
+            if ($(toTabulatorify).hasClass("tbl-full-width")) {
+                $('#divMainContent').addClass('col-12').removeClass("col-md-8");
+            } 
+            if ($(toTabulatorify).hasClass("hide-sidebar")) {
+                $('#divMainContent + div.col-md-4').hide();
+            }
+            new Tabulator(this, {
+                layout:"fitData"
+            });
+        });
+    }
+
+    if($('div.master-footer:visible').length) {
+        buildTUAlert();
+        moveHeaderAndSidebar();
+        buildSystemStatus();
+        buildLiveChatElements();
+    }
+    
+    if($("meta[property='og:type']").attr('content') == "article" && $('h2, h3, h4', "#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").length > 1) {
+        buildTableOfContents();
     }
 });
