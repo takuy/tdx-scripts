@@ -325,7 +325,15 @@ function buildTableOfContents() {
     }
 }
 
+function handleInlineRedirect() {
+    let redirectTarget = $('.redir-handler').first().data('target');
+    if (redirectTarget) {
+        window.location.replace(redirectTarget);
+    };
+}
+
 jQuery(document).ready(function() {
+    handleInlineRedirect();
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator_bootstrap3.min.css">');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.34.0/tocbot.css">');
