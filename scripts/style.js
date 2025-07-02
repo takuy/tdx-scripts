@@ -373,6 +373,9 @@ function addEditToAllServiceAndKbs() {
             let link = "";
             let editAnchor = "";
             let currentLink =  $(this).attr('href').trim();
+            if (currentLink.indexOf("Shortcuts") > -1 || currentLink.indexOf("SIDs") > -1) {
+                return;
+            }
             let id = currentLink.match(/ID=(\d*)/)[1];
             if ( currentLink.indexOf("ServiceDet") > -1) {
                 link = '/TDClient/277/Portal/Requests/Edit?popup=1&ID=' + id;
