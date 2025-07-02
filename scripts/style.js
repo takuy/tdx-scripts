@@ -332,6 +332,39 @@ function handleInlineRedirect() {
     };
 }
 
+function handlePromoteService() {
+    $('#ctl00_ctl00_cpContent_cpContent_divServices .gutter-bottom-lg:contains(⭐)').each(function() {
+        let desc = $('.gray', $(this)).text().trim().replace('⭐','');
+        let name = $('h3 a', $(this)).text().trim();
+        let link = '/TDClient/277/Portal/Requests/TicketRequests/NewForm?RequestorType=Service&ID=' + $('h3 a', $(this)).attr('href').trim().split('=')[1];
+        
+        let categoryTemplate = `<div class="media media-doubled border category-box category-box-collapsed" title="${name}">
+          <div class="category-box-text-content">
+            <div class="media-left leftIcon">
+              <span class="gutter-top-sm media-object category-icon fa-solid fa-4x fa-fw" aria-hidden="true">\uf005</span>
+            </div>
+            <div class="media-body">
+              <h3 class="category-title">
+                <span class="category-title">
+                  <a href="${link}">${name}</a>
+                </span>
+              </h3>
+              <div class="category-box-description">
+                <small>
+                  ${desc}
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        $('#divCats > div.gutter-bottom').append(categoryTemplate);
+        $(this).hide();
+        if($('#ctl00_ctl00_cpContent_cpContent_divServices div.gutter-bottom-lg:visible').length <= 0) {
+            $('#ctl00_ctl00_cpContent_cpContent_divServices').hide();
+        }
+    });
+}
+
 jQuery(document).ready(function() {
     handleInlineRedirect();
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
@@ -369,6 +402,7 @@ jQuery(document).ready(function() {
         buildTUAlert();
         moveHeaderAndSidebar();
         buildSystemStatus();
+        handlePromoteService();
         buildLiveChatElements();
     }
     
