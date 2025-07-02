@@ -367,6 +367,29 @@ function handlePromoteService() {
     });
 }
 
+function addEditToAllServiceAndKbs() {
+    if($('span[title="Edit Category"]').length) {
+        $('#ctl00_ctl00_cpContent_cpContent_divServices .gutter-bottom-xs a').each(function() {
+            let link = '/TDClient/277/Portal/Requests/Edit?popup=1&ID=' + $(this).attr('href').trim().split('=')[1];
+            
+            let editAnchor = `<a class="shortcut-edit" role="button" href="${link}" onclick="openWinHref(event, 992, 700, '33')" title="Edit service">
+              <span class="fa-solid fa-pencil" aria-hidden="true"></span>
+            <span class="sr-only">Edit service</span></a>`;
+            $(this).before(editAnchor);
+        });
+
+        $('#divCats .gutter-bottom-xs a').each(function() {
+            let link = '/TDClient/277/Portal/KB/Edit?popup=1&ID=' + $(this).attr('href').trim().split('=')[1];
+            
+            let editAnchor = `<a class="shortcut-edit" role="button" href="${link}" onclick="openWinHref(event, 992, 700, '33')" title="Edit knowledge article">
+              <span class="fa-solid fa-pencil" aria-hidden="true"></span>
+            <span class="sr-only">Edit knowledge article</span></a>`;
+            $(this).before(editAnchor);
+        });
+    }
+}
+
+
 jQuery(document).ready(function() {
     handleInlineRedirect();
     $('head').append('<link rel="stylesheet" type="text/css" href="https://takuy.github.io/tdx-scripts/style/style.css">');
@@ -406,6 +429,7 @@ jQuery(document).ready(function() {
         buildSystemStatus();
         handlePromoteService();
         buildLiveChatElements();
+        addEditToAllServiceAndKbs();
     }
     
     if($("meta[property='og:type']").attr('content') == "article" && $('h2, h3, h4', "#ctl00_ctl00_cpContent_cpContent_divBody, #ctl00_ctl00_cpContent_cpContent_divDescription").length > 1) {
