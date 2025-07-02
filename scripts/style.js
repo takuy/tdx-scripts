@@ -362,6 +362,8 @@ function handlePromoteService() {
         if($('#ctl00_ctl00_cpContent_cpContent_divServices div.gutter-bottom-lg:visible').length <= 0) {
             $('#ctl00_ctl00_cpContent_cpContent_divServices').hide();
         }
+        let catCount = $('#divCats > div.gutter-bottom .category-box').length;
+        $('#divCats h2').text(`Categories (${catCount})`);
     });
 }
 
